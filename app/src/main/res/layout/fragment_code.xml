@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.loginFragment.CodeFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <com.chaos.view.PinView
+        android:id="@+id/pin_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/PinWidget.PinView"
+        android:cursorVisible="true"
+        android:inputType="number"
+        android:textSize="20sp"
+        android:textColor="#0B2235"
+        app:cursorWidth="2dp"
+        app:itemCount="4"
+        app:itemHeight="46dp"
+        app:itemWidth="46dp"
+        app:itemRadius="15dp"
+        app:itemSpacing="15dp"
+        app:lineWidth="2dp"
+        app:lineColor="#D0D5DD"
+
+        app:viewType="rectangle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="20dp"
+        android:text="Continue"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:backgroundTint="#00BFA5"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragments.loginFragment.LoginFragment">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:textSize="15sp"
+        android:textColor="#00B8D4"
+        android:text="Telefon raqamingiz orqali ro'yhatdan o'ting"
+        app:layout_constraintBottom_toTopOf="@+id/edt_masked"
+        app:layout_constraintEnd_toEndOf="@+id/edt_masked"
+        app:layout_constraintStart_toStartOf="@+id/edt_masked" />
+
+    <com.vicmikhailau.maskededittext.MaskedEditText
+        android:id="@+id/edt_masked"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_margin="10dp"
+        android:background="@drawable/shape_edt_false"
+        android:hint="+998"
+        android:textSize="20sp"
+        android:paddingStart="10dp"
+        app:mask="+998(##)###-##-##"
+        android:textColorHint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_continue"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="20dp"
+        android:text="Continue"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:backgroundTint="#00BFA5"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

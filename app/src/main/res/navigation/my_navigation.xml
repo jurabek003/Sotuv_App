@@ -7,7 +7,24 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="uz.turgunboyevjurabek.saxovat.ui.fragments.HomeFragment"
+        android:name="uz.turgunboyevjurabek.saxovat.ui.fragments.homeFragment.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_codeFragment"
+            app:destination="@id/codeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="uz.turgunboyevjurabek.saxovat.ui.fragments.loginFragment.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
+    <fragment
+        android:id="@+id/codeFragment"
+        android:name="uz.turgunboyevjurabek.saxovat.ui.fragments.loginFragment.CodeFragment"
+        android:label="fragment_code"
+        tools:layout="@layout/fragment_code" />
 </navigation>
