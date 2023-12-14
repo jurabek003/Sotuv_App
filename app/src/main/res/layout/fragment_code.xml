@@ -25,7 +25,6 @@
         app:itemSpacing="15dp"
         app:lineWidth="2dp"
         app:lineColor="#D0D5DD"
-
         app:viewType="rectangle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,6 +33,7 @@
 
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_continue"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -43,6 +43,6 @@
         android:text="Continue"
         android:textStyle="bold"
         android:textSize="20sp"
-        android:backgroundTint="#00BFA5"/>
+        android:backgroundTint="@color/btn_false"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
