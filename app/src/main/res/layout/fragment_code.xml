@@ -7,42 +7,62 @@
     tools:context=".ui.fragments.loginFragment.CodeFragment">
 
     <!-- TODO: Update blank fragment layout -->
-
-    <com.chaos.view.PinView
-        android:id="@+id/pin_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/PinWidget.PinView"
-        android:cursorVisible="true"
-        android:inputType="number"
-        android:textSize="20sp"
-        android:textColor="#0B2235"
-        app:cursorWidth="2dp"
-        app:itemCount="4"
-        app:itemHeight="46dp"
-        app:itemWidth="46dp"
-        app:itemRadius="15dp"
-        app:itemSpacing="15dp"
-        app:lineWidth="2dp"
-        app:lineColor="#D0D5DD"
-
-        app:viewType="rectangle"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <com.google.android.material.button.MaterialButton
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent=".7"
+        android:layout_margin="15dp"
+        app:strokeWidth="0dp"
+        app:cardElevation="10dp"
+        android:backgroundTint="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="20dp"
-        android:text="Continue"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:backgroundTint="#00BFA5"/>
+        app:layout_constraintEnd_toEndOf="parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.chaos.view.PinView
+                android:id="@+id/pin_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/PinWidget.PinView"
+                android:cursorVisible="true"
+                android:inputType="number"
+                android:textSize="20sp"
+                android:textColor="#0B2235"
+                app:cursorWidth="2dp"
+                app:itemCount="4"
+                app:itemHeight="46dp"
+                app:itemWidth="46dp"
+                app:itemRadius="15dp"
+                app:itemSpacing="15dp"
+                app:lineWidth="2dp"
+                app:lineColor="#D0D5DD"
+                android:layout_marginTop="80dp"
+                app:viewType="rectangle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_continue"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginHorizontal="20dp"
+                android:text="Continue"
+                android:textStyle="bold"
+                android:layout_marginBottom="50dp"
+                android:textSize="20sp"
+                android:backgroundTint="@color/btn_false"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
