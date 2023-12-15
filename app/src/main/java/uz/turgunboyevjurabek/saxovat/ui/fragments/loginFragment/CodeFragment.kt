@@ -2,7 +2,12 @@ package uz.turgunboyevjurabek.saxovat.ui.fragments.loginFragment
 
 import android.annotation.SuppressLint
 import android.graphics.Color
+import android.graphics.Typeface
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableStringBuilder
+import android.text.style.ForegroundColorSpan
+import android.text.style.StyleSpan
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -32,9 +37,23 @@ class CodeFragment : Fragment() {
         binding.pinView.isPasswordHidden=true
 
         edtWork()
+        thtInfo()
 
 
+    }
 
+    private fun thtInfo() {
+        val textView= binding.thtInfo
+        val getNumber=arguments?.getString("key_number")
+
+        val text="Sms kod ${getNumber.toString()} raqamiga yuborildi"
+        val spannable = SpannableStringBuilder(text)
+
+        val blackColorSpan = ForegroundColorSpan(resources.getColor(R.color.black))
+        val boldStyleSpan = StyleSpan(Typeface.BOLD)
+        spannable.setSpan(blackColorSpan, 8, 21, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannable.setSpan(boldStyleSpan, 8, 21, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        textView.text=spannable
     }
 
     private fun edtWork() {
