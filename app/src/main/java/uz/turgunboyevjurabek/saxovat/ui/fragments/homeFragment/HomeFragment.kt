@@ -10,6 +10,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.HiltAndroidApp
 import uz.turgunboyevjurabek.saxovat.R
 import uz.turgunboyevjurabek.saxovat.databinding.FragmentHomeBinding
+import uz.turgunboyevjurabek.saxovat.utils.LoginCheck
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -26,6 +27,9 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        findNavController().navigate(R.id.loginFragment)
+
+        if (LoginCheck.token==null){
+            findNavController().navigate(R.id.loginFragment)
+        }
     }
 }
