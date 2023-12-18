@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.core.widget.addTextChangedListener
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.vicmikhailau.maskededittext.MaskedWatcher
@@ -43,12 +45,18 @@ class LoginFragment : Fragment() {
         dialog.setView(checkNumberDialogBinding.root)
 
 
-
         binding.btnContinue.setOnClickListener {
+
+            var number=binding.edtMasked.unMaskedText
+            var number2="+998"
+            var number3=number2+number
+            Toast.makeText(requireContext(), "$number3", Toast.LENGTH_SHORT).show()
+
             binding.mainLayout.alpha=0.1f
             dialog.show()
             checkNumberDialogBinding.btnYes.setOnClickListener {
-                findNavController().navigate(R.id.codeFragment)
+                findNavController().navigate(R.id.codeFragment, bundleOf("key_number" to number3))
+//                val action=
                 dialog.cancel()
                 binding.mainLayout.alpha=1f
             }
@@ -56,13 +64,8 @@ class LoginFragment : Fragment() {
                 dialog.cancel()
                 binding.mainLayout.alpha=1f
             }
-            var number=binding.edtMasked.unMaskedText
-            var number2="+998"
-            var number3=number2+number
-            Toast.makeText(requireContext(), "$number3", Toast.LENGTH_SHORT).show()
             checkNumberDialogBinding.thtNumber.text=number3.toString().trim()
         }
-
 
     }
 

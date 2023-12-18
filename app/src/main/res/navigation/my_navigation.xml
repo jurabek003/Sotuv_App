@@ -21,7 +21,11 @@
         android:id="@+id/loginFragment"
         android:name="uz.turgunboyevjurabek.saxovat.ui.fragments.loginFragment.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_codeFragment"
+            app:destination="@id/codeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/codeFragment"
         android:name="uz.turgunboyevjurabek.saxovat.ui.fragments.loginFragment.CodeFragment"

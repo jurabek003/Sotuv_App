@@ -7,62 +7,127 @@
     tools:context=".ui.fragments.loginFragment.CodeFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintHeight_percent=".7"
-        android:layout_margin="15dp"
-        app:strokeWidth="0dp"
-        app:cardElevation="10dp"
-        android:backgroundTint="@color/white"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
-            <com.chaos.view.PinView
-                android:id="@+id/pin_view"
+    <TextView
+        android:id="@+id/tht_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center_horizontal"
+        android:padding="10dp"
+        android:textSize="18sp"
+
+        app:layout_constraintBottom_toTopOf="@+id/pin_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+
+    <com.chaos.view.PinView
+        android:id="@+id/pin_view"
+        style="@style/PinWidget.PinView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:cursorVisible="true"
+        android:inputType="number"
+        android:textColor="#0B2235"
+        android:textSize="20sp"
+        android:layout_marginTop="15dp"
+        app:cursorWidth="2dp"
+        app:itemCount="4"
+        app:itemHeight="46dp"
+        app:itemRadius="15dp"
+        app:itemSpacing="15dp"
+        app:itemWidth="46dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tht_info"
+        app:lineColor="#D0D5DD"
+        app:lineWidth="2dp"
+        app:viewType="rectangle" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCardView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/PinWidget.PinView"
-                android:cursorVisible="true"
-                android:inputType="number"
-                android:textSize="20sp"
-                android:textColor="#0B2235"
-                app:cursorWidth="2dp"
-                app:itemCount="4"
-                app:itemHeight="46dp"
-                app:itemWidth="46dp"
-                app:itemRadius="15dp"
-                app:itemSpacing="15dp"
-                app:lineWidth="2dp"
-                app:lineColor="#D0D5DD"
-                android:layout_marginTop="80dp"
-                app:viewType="rectangle"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_marginTop="15dp"
+                android:backgroundTint="#FFFFFFDC"
+                app:layout_constraintEnd_toEndOf="@+id/pin_view"
+                app:layout_constraintStart_toStartOf="@+id/pin_view"
+                app:layout_constraintTop_toBottomOf="@+id/pin_view">
 
+                <TextView
+                    android:id="@+id/tht_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingHorizontal="15dp"
+                    android:paddingVertical="10dp"
+                    android:text="01:00"
+                    android:textColor="@color/black" />
+            </com.google.android.material.card.MaterialCardView>
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_continue"
-                android:layout_width="match_parent"
-                android:layout_height="?actionBarSize"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginHorizontal="20dp"
-                android:text="Continue"
+            <TextView
+                android:id="@+id/tht_again"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_edt_false"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="5dp"
+                android:text="Sms kodni qayta olish uchun bosing"
+                android:textColor="#770000"
+                android:textSize="13sp"
                 android:textStyle="bold"
-                android:layout_marginBottom="50dp"
-                android:textSize="20sp"
-                android:backgroundTint="@color/btn_false"/>
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_continue"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="50dp"
+        android:backgroundTint="@color/btn_false"
+        android:text="Continue"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:elevation="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="horizontal">
+        <ImageView
+            android:importantForAccessibility="no"
+            android:id="@+id/img_back"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?actionBarItemBackground"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:src="@drawable/back"
+            android:padding="13dp"
+            android:layout_marginStart="10dp" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/verification_code"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:fontFamily="@font/belgrano"/>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
