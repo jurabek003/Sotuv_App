@@ -8,15 +8,9 @@ import uz.turgunboyevjurabek.saxovat.model.madels.register.RegisterRequest
 import uz.turgunboyevjurabek.saxovat.model.madels.register.RegisterRespons
 
 interface ApiService {
-
-
     @POST("login/")
-    suspend fun getLoginToken(@Body loginRequest: LoginRequest):LoginRespons
-
-
+    suspend fun postLogin(@Body loginRequest: LoginRequest):LoginRespons
     @POST("register/")
-    suspend fun getRegisterUser(@Body registerRequest: RegisterRequest):RegisterRespons
-
-
+    suspend fun registerUser(@Body registerRequest: RegisterRequest):RegisterRespons
 
 }
