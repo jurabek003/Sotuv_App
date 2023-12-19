@@ -23,28 +23,30 @@ import uz.turgunboyevjurabek.saxovat.databinding.FragmentLoginBinding
 import uz.turgunboyevjurabek.saxovat.model.madels.login.LoginRequest
 import uz.turgunboyevjurabek.saxovat.utils.Status
 import uz.turgunboyevjurabek.saxovat.vm.login.LoginViewModel
+import uz.turgunboyevjurabek.saxovat.vm.register.RegisterViewModel
 
 @AndroidEntryPoint
 class LoginFragment : Fragment() {
     private val binding by lazy { FragmentLoginBinding.inflate(layoutInflater)}
     private val loginViewModel:LoginViewModel by viewModels()
+    private val registerViewModel:RegisterViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
 
         login()
+        register()
 
         return binding.root
     }
 
+    private fun register() {
+
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
-
-
-
     }
 
     private fun login() {

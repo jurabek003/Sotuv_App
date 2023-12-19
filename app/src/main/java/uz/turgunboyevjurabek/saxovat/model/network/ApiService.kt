@@ -4,10 +4,13 @@ import retrofit2.http.Body
 import retrofit2.http.POST
 import uz.turgunboyevjurabek.saxovat.model.madels.login.LoginRequest
 import uz.turgunboyevjurabek.saxovat.model.madels.login.LoginRespons
+import uz.turgunboyevjurabek.saxovat.model.madels.register.RegisterRequest
+import uz.turgunboyevjurabek.saxovat.model.madels.register.RegisterRespons
 
 interface ApiService {
     @POST("login/")
-    suspend fun postLogin(
-        @Body loginRequest: LoginRequest):LoginRespons
+    suspend fun postLogin(@Body loginRequest: LoginRequest):LoginRespons
+    @POST("register/")
+    suspend fun registerUser(@Body registerRequest: RegisterRequest):RegisterRespons
 
 }
