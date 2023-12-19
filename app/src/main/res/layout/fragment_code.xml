@@ -92,6 +92,7 @@
         android:backgroundTint="@color/btn_false"
         android:text="Continue"
         android:textSize="20sp"
+        app:cornerRadius="15dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

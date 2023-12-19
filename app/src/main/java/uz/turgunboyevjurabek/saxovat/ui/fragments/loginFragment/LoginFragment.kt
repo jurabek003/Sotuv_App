@@ -1,5 +1,6 @@
 package uz.turgunboyevjurabek.saxovat.ui.fragments.loginFragment
 
+import android.graphics.Rect
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -34,7 +35,7 @@ class LoginFragment : Fragment() {
         edtWork()
 
        checkNumberDialog()
-
+       // keyBoardTest()
 
     }
 
@@ -46,16 +47,18 @@ class LoginFragment : Fragment() {
 
 
         binding.btnContinue.setOnClickListener {
-
+            var code =binding.countryCode.selectedCountryCode
             var number=binding.edtMasked.unMaskedText
-            var number2="+998"
-            var number3=number2+number
-            Toast.makeText(requireContext(), "$number3", Toast.LENGTH_SHORT).show()
+            var number2=binding.edtTextNumber.text
+            var sum=code+number2
+            Toast.makeText(requireContext(), "$sum", Toast.LENGTH_SHORT).show()
+
+
 
             binding.mainLayout.alpha=0.1f
             dialog.show()
             checkNumberDialogBinding.btnYes.setOnClickListener {
-                findNavController().navigate(R.id.codeFragment, bundleOf("key_number" to number3))
+                findNavController().navigate(R.id.codeFragment, bundleOf())
 //                val action=
                 dialog.cancel()
                 binding.mainLayout.alpha=1f
@@ -64,7 +67,7 @@ class LoginFragment : Fragment() {
                 dialog.cancel()
                 binding.mainLayout.alpha=1f
             }
-            checkNumberDialogBinding.thtNumber.text=number3.toString().trim()
+            //checkNumberDialogBinding.thtNumber.text=number3.toString().trim()
         }
 
     }
@@ -82,5 +85,24 @@ class LoginFragment : Fragment() {
                 binding.edtMasked.setBackgroundResource(R.drawable.shape_edt_true)
             }
         }
+    }
+    private fun keyBoardTest(){
+        val edt=binding.edtMasked
+        val button =binding.btnContinue
+
+        edt.viewTreeObserver.addOnGlobalLayoutListener {
+            val rect = Rect()
+            edt.getWindowVisibleDisplayFrame(rect)
+            val screenHeight = edt.rootView.height
+            val keypadHeight = screenHeight - rect.bottom
+
+            if (keypadHeight > screenHeight * 0.25) { // Klaviatura ochilgan
+                button.translationY = (-keypadHeight).toFloat()
+            } else { // Klaviatura yopilgan
+                button.translationY = 0f
+            }
+        }
+
+
     }
 }

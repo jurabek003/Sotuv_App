@@ -2,6 +2,7 @@ package uz.turgunboyevjurabek.saxovat.ui.fragments.loginFragment
 
 import android.annotation.SuppressLint
 import android.graphics.Color
+import android.graphics.Rect
 import android.graphics.Typeface
 import android.os.Bundle
 import android.os.Handler
@@ -38,6 +39,10 @@ class CodeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.imgBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
+
         binding.pinView.setAnimationEnable(true)
         binding.pinView.isPasswordHidden=true
 
@@ -57,6 +62,8 @@ class CodeFragment : Fragment() {
         if (!LoginCheck.token.isNullOrEmpty()){
             findNavController().navigate(R.id.homeFragment)
         }
+
+        keyBoardTest()
 
     }
 
@@ -110,5 +117,26 @@ class CodeFragment : Fragment() {
         }
 
     }
+
+    private fun keyBoardTest(){
+        val edt=binding.pinView
+        val button =binding.btnContinue
+
+        edt.viewTreeObserver.addOnGlobalLayoutListener {
+            val rect = Rect()
+            edt.getWindowVisibleDisplayFrame(rect)
+            val screenHeight = edt.rootView.height-240f
+            val keypadHeight = screenHeight - rect.bottom
+
+            if (keypadHeight > screenHeight * 0.15) { // Klaviatura ochilgan
+                button.translationY = (-keypadHeight).toFloat()
+            } else { // Klaviatura yopilgan
+                button.translationY = 0f
+            }
+        }
+
+
+    }
+
 
 }

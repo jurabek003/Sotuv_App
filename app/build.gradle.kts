@@ -107,5 +107,10 @@ dependencies {
      */
     implementation ("androidx.navigation:navigation-fragment-ktx:2.7.5")
     implementation ("androidx.navigation:navigation-ui-ktx:2.7.5")
+    /**
+     * Country edtText
+     */
+    implementation ("com.hbb20:ccp:2.5.1")
+
 
 }
