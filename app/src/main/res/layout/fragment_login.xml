@@ -54,4 +54,22 @@
         android:textSize="20sp"
         android:textStyle="bold" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="or"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_marginTop="10dp"/>
+        <TextView
+            android:id="@+id/tht_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="17sp"
+            android:text="by Register"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/shape_edt_false"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="5dp"
+            android:fontFamily="@font/belgrano"/>
 </LinearLayout>
