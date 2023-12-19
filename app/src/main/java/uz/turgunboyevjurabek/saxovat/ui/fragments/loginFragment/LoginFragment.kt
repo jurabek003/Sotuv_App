@@ -35,7 +35,7 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
 
-        login()
+        //login()
         register()
 
         return binding.root
@@ -49,31 +49,31 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
     }
 
-    private fun login() {
-
-        binding.btnContinue.setOnClickListener {
-            val loginRequest=LoginRequest(binding.edtUserName.text.toString(),binding.edtPassword.text.toString())
-
-            loginViewModel.loginWorking(loginRequest).observe(requireActivity(), Observer {
-                when(it.status){
-                Status.LOADING -> {
-                    Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
-            }
-
-                Status.SUCCESS -> {
-                    Toast.makeText(requireContext(), "Uraa", Toast.LENGTH_SHORT).show()
-                    Toast.makeText(requireContext(), "${it.data}", Toast.LENGTH_SHORT).show()
-            }
-
-                Status.ERROR -> {
-                Toast.makeText(requireContext(), "${it.message}", Toast.LENGTH_SHORT).show()
-            }
-
-                }
-            })
-
-
-        }
-    }
+//    private fun login() {
+//
+//        binding.btnContinue.setOnClickListener {
+//            val loginRequest=LoginRequest(binding.edtUserName.text.toString(),binding.edtPassword.text.toString())
+//
+//            loginViewModel.loginWorking(loginRequest).observe(requireActivity(), Observer {
+//                when(it.status){
+//                Status.LOADING -> {
+//                    Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
+//            }
+//
+//                Status.SUCCESS -> {
+//                    Toast.makeText(requireContext(), "Uraa", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(requireContext(), "${it.data}", Toast.LENGTH_SHORT).show()
+//            }
+//
+//                Status.ERROR -> {
+//                Toast.makeText(requireContext(), "${it.message}", Toast.LENGTH_SHORT).show()
+//            }
+//
+//                }
+//            })
+//
+//
+//        }
+//    }
 
 }
