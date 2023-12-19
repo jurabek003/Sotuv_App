@@ -10,99 +10,68 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.vicmikhailau.maskededittext.MaskedWatcher
+import dagger.hilt.android.AndroidEntryPoint
 import uz.turgunboyevjurabek.saxovat.R
 import uz.turgunboyevjurabek.saxovat.databinding.ChackNumberDialogBinding
 import uz.turgunboyevjurabek.saxovat.databinding.FragmentLoginBinding
+import uz.turgunboyevjurabek.saxovat.model.madels.login.LoginRequest
+import uz.turgunboyevjurabek.saxovat.utils.Status
+import uz.turgunboyevjurabek.saxovat.vm.login.LoginViewModel
 
+@AndroidEntryPoint
 class LoginFragment : Fragment() {
     private val binding by lazy { FragmentLoginBinding.inflate(layoutInflater)}
+    private val loginViewModel:LoginViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
 
-
+        login()
 
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        edtWork()
 
-       checkNumberDialog()
-       // keyBoardTest()
+
+
+
 
     }
 
-    private fun checkNumberDialog() {
-        val checkNumberDialogBinding=ChackNumberDialogBinding.inflate(layoutInflater)
-        val dialog =MaterialAlertDialogBuilder(requireContext()).create()
-        dialog.setCancelable(false)
-        dialog.setView(checkNumberDialogBinding.root)
-
+    private fun login() {
 
         binding.btnContinue.setOnClickListener {
-            var code =binding.countryCode.selectedCountryCode
-            var number=binding.edtMasked.unMaskedText
-            var number2=binding.edtTextNumber.text
-            var sum=code+number2
-            Toast.makeText(requireContext(), "$sum", Toast.LENGTH_SHORT).show()
+            val loginRequest=LoginRequest(binding.edtUserName.text.toString(),binding.edtPassword.text.toString())
 
-
-
-            binding.mainLayout.alpha=0.1f
-            dialog.show()
-            checkNumberDialogBinding.btnYes.setOnClickListener {
-                findNavController().navigate(R.id.codeFragment, bundleOf())
-//                val action=
-                dialog.cancel()
-                binding.mainLayout.alpha=1f
+            loginViewModel.loginWorking(loginRequest).observe(requireActivity(), Observer {
+                when(it.status){
+                Status.LOADING -> {
+                    Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
             }
-            checkNumberDialogBinding.btnNo.setOnClickListener {
-                dialog.cancel()
-                binding.mainLayout.alpha=1f
+
+                Status.SUCCESS -> {
+                    Toast.makeText(requireContext(), "Uraa", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "${it.data}", Toast.LENGTH_SHORT).show()
             }
-            //checkNumberDialogBinding.thtNumber.text=number3.toString().trim()
-        }
 
-    }
-
-    private fun edtWork() {
-
-
-        binding.edtMasked.addTextChangedListener {
-
-            if (binding.edtMasked.text.isNullOrEmpty()){
-                binding.btnContinue.setBackgroundColor(resources.getColor(R.color.btn_false))
-                binding.edtMasked.setBackgroundResource(R.drawable.shape_edt_false)
-            }else{
-                binding.btnContinue.setBackgroundColor(resources.getColor(R.color.btn_true))
-                binding.edtMasked.setBackgroundResource(R.drawable.shape_edt_true)
+                Status.ERROR -> {
+                Toast.makeText(requireContext(), "${it.message}", Toast.LENGTH_SHORT).show()
             }
+
+                }
+            })
+
+
         }
     }
-    private fun keyBoardTest(){
-        val edt=binding.edtMasked
-        val button =binding.btnContinue
 
-        edt.viewTreeObserver.addOnGlobalLayoutListener {
-            val rect = Rect()
-            edt.getWindowVisibleDisplayFrame(rect)
-            val screenHeight = edt.rootView.height
-            val keypadHeight = screenHeight - rect.bottom
-
-            if (keypadHeight > screenHeight * 0.25) { // Klaviatura ochilgan
-                button.translationY = (-keypadHeight).toFloat()
-            } else { // Klaviatura yopilgan
-                button.translationY = 0f
-            }
-        }
-
-
-    }
 }
