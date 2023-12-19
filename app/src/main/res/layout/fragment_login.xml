@@ -10,60 +10,46 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.loginFragment.LoginFragment">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:textSize="15sp"
-        android:textColor="#00B8D4"
-        android:text="Telefon raqamingiz orqali ro'yhatdan o'ting" />
-
-    <com.vicmikhailau.maskededittext.MaskedEditText
-        android:id="@+id/edt_masked"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:visibility="gone"
-        android:layout_height="?actionBarSize"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginBottom="30dp"
-        android:background="@drawable/shape_edt_false"
-        android:textSize="20sp"
-        android:hint="+998"
-        android:paddingStart="10dp"
-        android:inputType="phone"
-        app:mask="+998(##)###-##-##"
-        android:typeface="monospace"
-        android:textColorHint="#626F83" />
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingVertical="20dp"
-    android:orientation="horizontal">
-    <com.hbb20.CountryCodePicker
-        android:id="@+id/country_code"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_gravity="center"
-    />
-    <EditText
-        android:id="@+id/edt_text_number"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@drawable/shape_edt_false"
-        android:paddingStart="10dp"
-        android:layout_marginEnd="20dp"/>
-</LinearLayout>
+        android:paddingVertical="5dp"
+        android:layout_marginHorizontal="15dp">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_user_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/belgrano"
+            android:hint="user_name"
+            />
 
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="5dp"
+        android:layout_marginHorizontal="15dp">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_password"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="password"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/belgrano"
+            android:inputType="textPassword"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_continue"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
         app:cornerRadius="15dp"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginBottom="60dp"
-        android:backgroundTint="@color/btn_false"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/btn_true"
         android:text="Continue"
         android:textSize="20sp"
         android:textStyle="bold" />
