@@ -13,9 +13,11 @@ data class User(
     @SerializedName("id")
     val id: Int,
     @SerializedName("last_login")
-    val lastLogin: String,
+    val lastLogin: Any,
     @SerializedName("last_name")
     val lastName: String,
+    @SerializedName("password")
+    val password: String,
     @SerializedName("username")
     val username: String
 )

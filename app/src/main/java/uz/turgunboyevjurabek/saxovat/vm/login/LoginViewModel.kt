@@ -9,7 +9,7 @@ import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import uz.turgunboyevjurabek.saxovat.model.madels.login.LoginRequest
-import uz.turgunboyevjurabek.saxovat.model.madels.login.LoginRespons
+import uz.turgunboyevjurabek.saxovat.model.madels.login.LoginResponse
 import uz.turgunboyevjurabek.saxovat.model.repo.AppRepository
 import uz.turgunboyevjurabek.saxovat.utils.Resource
 import java.lang.Exception
@@ -17,9 +17,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(val appRepository: AppRepository) :ViewModel() {
-    private val getTokenLiveData=MutableLiveData<Resource<LoginRespons>>()
+    private val getTokenLiveData=MutableLiveData<Resource<LoginResponse>>()
 
-     fun loginWorking(loginRequest: LoginRequest):MutableLiveData<Resource<LoginRespons>> {
+     fun loginWorking(loginRequest: LoginRequest):MutableLiveData<Resource<LoginResponse>> {
         viewModelScope.launch {
             getTokenLiveData.postValue(Resource.loading("loading"))
             try {

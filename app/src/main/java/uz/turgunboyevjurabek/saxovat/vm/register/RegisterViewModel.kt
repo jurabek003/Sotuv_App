@@ -3,6 +3,7 @@ package uz.turgunboyevjurabek.saxovat.vm.register
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
@@ -13,6 +14,7 @@ import uz.turgunboyevjurabek.saxovat.model.repo.AppRepository
 import uz.turgunboyevjurabek.saxovat.utils.Resource
 import javax.inject.Inject
 
+@HiltViewModel
 class RegisterViewModel @Inject constructor(val appRepository: AppRepository):ViewModel() {
     val getRegisterLiveData=MutableLiveData<Resource<RegisterRespons>>()
 
