@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_navigation"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -13,9 +13,6 @@
         <action
             android:id="@+id/action_homeFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_codeFragment"
-            app:destination="@id/codeFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -23,12 +20,7 @@
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
-            android:id="@+id/action_loginFragment_to_codeFragment"
-            app:destination="@id/codeFragment" />
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/codeFragment"
-        android:name="uz.turgunboyevjurabek.saxovat.ui.fragments.loginFragment.CodeFragment"
-        android:label="fragment_code"
-        tools:layout="@layout/fragment_code" />
 </navigation>
