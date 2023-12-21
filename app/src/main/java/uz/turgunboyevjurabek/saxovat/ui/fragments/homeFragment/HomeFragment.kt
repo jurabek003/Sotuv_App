@@ -5,12 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.HiltAndroidApp
 import uz.turgunboyevjurabek.saxovat.R
 import uz.turgunboyevjurabek.saxovat.databinding.FragmentHomeBinding
 import uz.turgunboyevjurabek.saxovat.utils.LoginCheck
+import uz.turgunboyevjurabek.saxovat.utils.MySharedPreference
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -28,8 +30,11 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if (LoginCheck.token==null){
-            findNavController().navigate(R.id.loginFragment)
-        }
+
+        MySharedPreference.init(binding.root.context)
+        Toast.makeText(requireContext(), "${MySharedPreference.token}", Toast.LENGTH_SHORT).show()
+
+
+
     }
 }

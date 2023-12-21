@@ -19,7 +19,7 @@ object MySharedPreference {
         editor.apply()
     }
 
-    var token:String
+    var token:String?
         get() = preferences.getString("keyToken", "null")!!
         set(value) = preferences.edit{
             if (value!=null){

@@ -8,10 +8,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
+import uz.turgunboyevjurabek.saxovat.R
 import uz.turgunboyevjurabek.saxovat.databinding.FragmentLoginBinding
 import uz.turgunboyevjurabek.saxovat.model.madels.login.LoginRequest
 import uz.turgunboyevjurabek.saxovat.model.madels.register.RegisterRequest
+import uz.turgunboyevjurabek.saxovat.utils.MySharedPreference
 import uz.turgunboyevjurabek.saxovat.utils.Status
 import uz.turgunboyevjurabek.saxovat.vm.login.LoginViewModel
 import uz.turgunboyevjurabek.saxovat.vm.register.RegisterViewModel
@@ -26,7 +29,6 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
 
-        login()
 
 
         return binding.root
@@ -36,9 +38,20 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        MySharedPreference.init(binding.root.context)
+        if (MySharedPreference.token.equals("null")){
+            login()
+        }else{
+            findNavController().popBackStack()
+            findNavController().navigate(R.id.homeFragment)
+        }
+
     }
 
     private fun login() {
+
+
 
         binding.btnContinue.setOnClickListener {
             val loginRequest=LoginRequest(binding.edtUserName.text.toString(),binding.edtPassword.text.toString())
@@ -51,6 +64,9 @@ class LoginFragment : Fragment() {
 
                 Status.SUCCESS -> {
                     Toast.makeText(requireContext(), "Uraa ${it.data}", Toast.LENGTH_SHORT).show()
+                    MySharedPreference.token=it.data?.token!!
+                    findNavController().popBackStack()
+                    findNavController().navigate(R.id.homeFragment)
 
             }
 
