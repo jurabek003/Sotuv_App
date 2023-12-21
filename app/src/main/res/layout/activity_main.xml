@@ -6,16 +6,36 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
+<com.google.android.material.bottomnavigation.BottomNavigationView
+    android:id="@+id/btn_navigation"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:menu="@menu/btn_navigation"
+    app:itemIconTint="@color/white"
+    android:visibility="gone"
+    app:itemHorizontalTranslationEnabled="true"
+    app:itemTextAppearanceActive="@color/white"
+    app:itemTextAppearanceActiveBoldEnabled="true"
+    app:itemTextAppearanceInactive="@color/inActive"
+    app:itemActiveIndicatorStyle="@color/material_on_surface_stroke"
+    android:background="#00B8D4"
+    app:itemRippleColor="@color/btn_true"
+    app:itemIconSize="30dp"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"/>
+
     <fragment
         android:id="@+id/my_navigation_host"
         android:name="androidx.navigation.fragment.NavHostFragment"
-        app:navGraph="@navigation/my_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         app:defaultNavHost="true"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_navigation"
+        app:navGraph="@navigation/my_navigation" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
