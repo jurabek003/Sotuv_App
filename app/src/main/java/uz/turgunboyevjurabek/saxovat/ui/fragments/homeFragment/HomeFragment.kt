@@ -9,8 +9,11 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.HiltAndroidApp
+import uz.turgunboyevjurabek.saxovat.MainActivity
 import uz.turgunboyevjurabek.saxovat.R
+import uz.turgunboyevjurabek.saxovat.databinding.ActivityMainBinding
 import uz.turgunboyevjurabek.saxovat.databinding.FragmentHomeBinding
+import uz.turgunboyevjurabek.saxovat.utils.AppObject
 import uz.turgunboyevjurabek.saxovat.utils.LoginCheck
 import uz.turgunboyevjurabek.saxovat.utils.MySharedPreference
 
@@ -31,10 +34,27 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
+        /**
+         * Logindan o'tganligini tekshiradi
+         */
         MySharedPreference.init(binding.root.context)
         Toast.makeText(requireContext(), "${MySharedPreference.token}", Toast.LENGTH_SHORT).show()
 
 
+
+        binding.btnSotuv.setOnClickListener {
+            findNavController().navigate(R.id.karzinkaFragment)
+        }
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        /**
+         * ButtonNavigation ni gone qilish
+         */
+
+        AppObject.binding.btnNavigation.visibility=View.GONE
 
     }
 }

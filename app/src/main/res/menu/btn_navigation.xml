@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/purchaseFragment"
+        android:icon="@drawable/backed"
+        android:iconTint="@color/white"
+        android:title="Sotib olish" />
+
+    <item android:id="@+id/karzinkaFragment"
+        android:icon="@drawable/kalaska"
+        android:iconTint="@color/white"
+        android:title="Karzinka" />
+
+</menu>

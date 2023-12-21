@@ -13,6 +13,12 @@
         <action
             android:id="@+id/action_homeFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_karzinkaFragment"
+            app:destination="@id/karzinkaFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_purchaseFragment"
+            app:destination="@id/purchaseFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -22,5 +28,23 @@
         <action
             android:id="@+id/action_loginFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/purchaseFragment"
+        android:name="uz.turgunboyevjurabek.saxovat.ui.fragments.Categories.PurchaseFragment"
+        android:label="fragment_purchase"
+        tools:layout="@layout/fragment_purchase" >
+        <action
+            android:id="@+id/action_purchaseFragment_to_karzinkaFragment"
+            app:destination="@id/karzinkaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/karzinkaFragment"
+        android:name="uz.turgunboyevjurabek.saxovat.ui.fragments.Categories.KarzinkaFragment"
+        android:label="fragment_karzinka"
+        tools:layout="@layout/fragment_karzinka" >
+        <action
+            android:id="@+id/action_karzinkaFragment_to_purchaseFragment"
+            app:destination="@id/purchaseFragment" />
     </fragment>
 </navigation>

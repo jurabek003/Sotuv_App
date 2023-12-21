@@ -75,6 +75,7 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_sotuv"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_gravity="center"
@@ -85,9 +86,10 @@
                     app:iconSize="30dp"
                     />
                 <TextView
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Buyurtma"
+                    android:text="Sotuv"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold"
