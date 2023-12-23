@@ -10,13 +10,13 @@
         android:layout_height="100dp"
         app:strokeWidth="0dp"
         app:cardElevation="5dp">
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/item_img"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
             android:src="@drawable/cross"
-            android:layout_gravity="center"/>
-
+            android:contentDescription="TODO" />
     </com.google.android.material.card.MaterialCardView>
     <TextView
         android:id="@+id/item_name"
