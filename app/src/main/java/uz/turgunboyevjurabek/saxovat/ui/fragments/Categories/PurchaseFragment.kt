@@ -10,16 +10,20 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import dagger.hilt.android.AndroidEntryPoint
 import uz.turgunboyevjurabek.saxovat.R
+import uz.turgunboyevjurabek.saxovat.adapters.PurchaseAdapter
 import uz.turgunboyevjurabek.saxovat.databinding.FragmentPurchaseBinding
 import uz.turgunboyevjurabek.saxovat.utils.AppObject
+import uz.turgunboyevjurabek.saxovat.utils.LoginCheck
 import uz.turgunboyevjurabek.saxovat.utils.MySharedPreference
 import uz.turgunboyevjurabek.saxovat.utils.Status
 import uz.turgunboyevjurabek.saxovat.vm.Categories.GetAllCategoriesViewModel
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class PurchaseFragment : Fragment() {
     private val binding by lazy { FragmentPurchaseBinding.inflate(layoutInflater) }
     private val getAllCategoriesViewModel:GetAllCategoriesViewModel by viewModels()
+    private lateinit var purchaseAdapter: PurchaseAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -39,12 +43,19 @@ class PurchaseFragment : Fragment() {
     }
 
     private fun getApiWorking() {
-        getAllCategoriesViewModel.getAllCategories(MySharedPreference.token!!)
+        getAllCategoriesViewModel.getAllCategories()
             .observe(requireActivity(), Observer {
                 when(it.status){
                     Status.LOADING -> Toast.makeText(requireContext(), "Loading at Purchase", Toast.LENGTH_SHORT).show()
                     Status.ERROR -> Toast.makeText(requireContext(), "Vay essiz ${it.message}", Toast.LENGTH_SHORT).show()
-                    Status.SUCCESS -> Toast.makeText(requireContext(), "Yess ${it.data}", Toast.LENGTH_SHORT).show()
+                    Status.SUCCESS -> {
+
+                        purchaseAdapter=PurchaseAdapter()
+                        purchaseAdapter.updateData(it.data!!)
+                        binding.rvCategories.adapter=purchaseAdapter
+
+                        Toast.makeText(requireContext(), "Yess ${it.data}", Toast.LENGTH_SHORT).show()
+                    }
                 }
             })
 

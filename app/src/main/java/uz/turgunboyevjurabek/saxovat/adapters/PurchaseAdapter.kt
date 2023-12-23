@@ -1,15 +1,26 @@
-package uz.turgunboyevjurabek.saxovat.adapters
+ package uz.turgunboyevjurabek.saxovat.adapters
 
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.bumptech.glide.Glide
+import com.squareup.picasso.Picasso
 import uz.turgunboyevjurabek.saxovat.databinding.ItemRvPurchaseBinding
 import uz.turgunboyevjurabek.saxovat.model.madels.categories.CategoriesResponseItem
 
-class PurchaseAdapter(var list: ArrayList<CategoriesResponseItem>):RecyclerView.Adapter<PurchaseAdapter.Vh>() {
+class PurchaseAdapter():RecyclerView.Adapter<PurchaseAdapter.Vh>() {
+     var list=ArrayList<CategoriesResponseItem>()
+
     inner class Vh(val itemRvPurchaseBinding: ItemRvPurchaseBinding):ViewHolder(itemRvPurchaseBinding.root){
         fun onBind(categoriesResponseItem: CategoriesResponseItem){
+            itemRvPurchaseBinding.itemName.text=categoriesResponseItem.name
+            Glide.with(itemRvPurchaseBinding.root.context)
+                .load(categoriesResponseItem.image)
+                .into(itemRvPurchaseBinding.itemImg)
+           // Picasso.get().load(categoriesResponseItem.image).placeholder(itemRvPurchaseBinding.itemImg.drawable)
+
 
         }
     }
@@ -22,5 +33,11 @@ class PurchaseAdapter(var list: ArrayList<CategoriesResponseItem>):RecyclerView.
 
     override fun onBindViewHolder(holder: Vh, position: Int) {
         holder.onBind(list[position])
+    }
+    fun updateData(newData: ArrayList<CategoriesResponseItem>){
+        if (list.isNotEmpty()){
+            list.clear()
+        }
+        list.addAll(newData)
     }
 }

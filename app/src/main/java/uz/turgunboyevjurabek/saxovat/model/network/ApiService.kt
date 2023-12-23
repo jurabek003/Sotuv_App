@@ -10,6 +10,7 @@ import uz.turgunboyevjurabek.saxovat.model.madels.login.LoginRequest
 import uz.turgunboyevjurabek.saxovat.model.madels.login.LoginResponse
 import uz.turgunboyevjurabek.saxovat.model.madels.register.RegisterRequest
 import uz.turgunboyevjurabek.saxovat.model.madels.register.RegisterRespons
+import uz.turgunboyevjurabek.saxovat.utils.MySharedPreference
 
 interface ApiService {
     @POST("user/login/")
@@ -19,6 +20,8 @@ interface ApiService {
     suspend fun registerUser(@Body registerRequest: RegisterRequest): RegisterRespons
 
     @GET("products/categories/")
-    suspend fun getCategories(@Header("Authorization") token:String):CategoriesResponseItem
+    suspend fun getCategories(@Header("Authorization") token:String="Token 287fbe4ea8ba04f6718e0d72ecde7ef96f669bdd"):ArrayList<CategoriesResponseItem>
+
+
 
 }
