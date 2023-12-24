@@ -33,7 +33,15 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        loginCheck()
 
+        binding.btnSotuv.setOnClickListener {
+            findNavController().navigate(R.id.allClientsFragment)
+        }
+
+    }
+
+    private fun loginCheck() {
         /**
          * Logindan o'tganligini tekshiradi
          */
@@ -42,12 +50,6 @@ class HomeFragment : Fragment() {
         LoginCheck.token=token
         Toast.makeText(requireContext(), "${MySharedPreference.token}", Toast.LENGTH_SHORT).show()
 
-
-
-        binding.btnSotuv.setOnClickListener {
-            findNavController().navigate(R.id.allClientsFragment)
-        }
-
     }
 
     override fun onResume() {
@@ -55,7 +57,6 @@ class HomeFragment : Fragment() {
         /**
          * ButtonNavigation ni gone qilish
          */
-
         AppObject.binding.btnNavigation.visibility=View.GONE
 
     }
