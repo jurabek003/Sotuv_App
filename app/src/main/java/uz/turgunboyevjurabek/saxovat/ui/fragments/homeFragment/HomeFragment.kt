@@ -45,7 +45,7 @@ class HomeFragment : Fragment() {
 
 
         binding.btnSotuv.setOnClickListener {
-            findNavController().navigate(R.id.karzinkaFragment)
+            findNavController().navigate(R.id.allClientsFragment)
         }
 
     }

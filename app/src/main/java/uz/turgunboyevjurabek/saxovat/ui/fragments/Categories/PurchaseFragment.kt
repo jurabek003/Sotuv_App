@@ -9,15 +9,11 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import dagger.hilt.android.AndroidEntryPoint
-import uz.turgunboyevjurabek.saxovat.R
-import uz.turgunboyevjurabek.saxovat.adapters.PurchaseAdapter
+import uz.turgunboyevjurabek.saxovat.adapters.categoriesAdapter.PurchaseAdapter
 import uz.turgunboyevjurabek.saxovat.databinding.FragmentPurchaseBinding
 import uz.turgunboyevjurabek.saxovat.utils.AppObject
-import uz.turgunboyevjurabek.saxovat.utils.LoginCheck
-import uz.turgunboyevjurabek.saxovat.utils.MySharedPreference
 import uz.turgunboyevjurabek.saxovat.utils.Status
 import uz.turgunboyevjurabek.saxovat.vm.Categories.GetAllCategoriesViewModel
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class PurchaseFragment : Fragment() {
@@ -37,9 +33,7 @@ class PurchaseFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
-
+        getApiWorking()
     }
 
     private fun getApiWorking() {
@@ -50,11 +44,14 @@ class PurchaseFragment : Fragment() {
                     Status.ERROR -> Toast.makeText(requireContext(), "Vay essiz ${it.message}", Toast.LENGTH_SHORT).show()
                     Status.SUCCESS -> {
 
-                        purchaseAdapter=PurchaseAdapter()
+                        purchaseAdapter= PurchaseAdapter()
                         purchaseAdapter.updateData(it.data!!)
                         binding.rvCategories.adapter=purchaseAdapter
 
-                        Toast.makeText(requireContext(), "Yess ${it.data}", Toast.LENGTH_SHORT).show()
+                        val getName=arguments?.getString("keyName")
+
+                        binding.thtClient.text = getName.toString()
+
                     }
                 }
             })
@@ -65,7 +62,6 @@ class PurchaseFragment : Fragment() {
         super.onResume()
         AppObject.binding.btnNavigation.visibility=View.VISIBLE
 
-        getApiWorking()
 
     }
 }
