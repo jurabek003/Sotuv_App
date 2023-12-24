@@ -114,5 +114,9 @@ dependencies {
      */
     implementation ("com.hbb20:ccp:2.5.1")
 
+    /**
+     * Lotti animation
+     */
+    implementation ("com.airbnb.android:lottie:5.0.3")
 
 }

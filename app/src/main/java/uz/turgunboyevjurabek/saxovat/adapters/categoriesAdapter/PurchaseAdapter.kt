@@ -1,17 +1,15 @@
- package uz.turgunboyevjurabek.saxovat.adapters
+ package uz.turgunboyevjurabek.saxovat.adapters.categoriesAdapter
 
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
-import com.squareup.picasso.Picasso
 import uz.turgunboyevjurabek.saxovat.databinding.ItemRvPurchaseBinding
 import uz.turgunboyevjurabek.saxovat.model.madels.categories.CategoriesResponseItem
 
 class PurchaseAdapter():RecyclerView.Adapter<PurchaseAdapter.Vh>() {
-     var list=ArrayList<CategoriesResponseItem>()
+     private var list=ArrayList<CategoriesResponseItem>()
 
     inner class Vh(val itemRvPurchaseBinding: ItemRvPurchaseBinding):ViewHolder(itemRvPurchaseBinding.root){
         fun onBind(categoriesResponseItem: CategoriesResponseItem){
