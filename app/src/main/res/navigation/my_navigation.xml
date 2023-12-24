@@ -34,6 +34,9 @@
         <action
             android:id="@+id/action_purchaseFragment_to_karzinkaFragment"
             app:destination="@id/karzinkaFragment" />
+        <action
+            android:id="@+id/action_purchaseFragment_to_allProductFragment"
+            app:destination="@id/allProductFragment" />
     </fragment>
     <fragment
         android:id="@+id/karzinkaFragment"
@@ -43,6 +46,9 @@
         <action
             android:id="@+id/action_karzinkaFragment_to_purchaseFragment"
             app:destination="@id/purchaseFragment" />
+        <action
+            android:id="@+id/action_karzinkaFragment_to_allProductFragment"
+            app:destination="@id/allProductFragment" />
     </fragment>
     <fragment
         android:id="@+id/allClientsFragment"
@@ -56,4 +62,9 @@
             android:id="@+id/action_allClientsFragment_to_purchaseFragment"
             app:destination="@id/purchaseFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/allProductFragment"
+        android:name="uz.turgunboyevjurabek.saxovat.ui.fragments.products.AllProductFragment"
+        android:label="fragment_all_product"
+        tools:layout="@layout/fragment_all_product" />
 </navigation>

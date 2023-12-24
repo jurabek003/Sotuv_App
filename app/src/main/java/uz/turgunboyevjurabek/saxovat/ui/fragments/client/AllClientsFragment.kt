@@ -25,7 +25,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class AllClientsFragment : Fragment(),AllClientsAdapter.OnClick {
     private val binding by lazy { FragmentAllClientsBinding.inflate(layoutInflater) }
-    val getAllClientsViewModel:GetAllClientsViewModel by viewModels()
+    private val getAllClientsViewModel:GetAllClientsViewModel by viewModels()
 
     lateinit var allClientsAdapter: AllClientsAdapter
     override fun onCreateView(

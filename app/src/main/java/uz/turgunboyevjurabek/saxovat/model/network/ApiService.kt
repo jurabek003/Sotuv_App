@@ -10,6 +10,7 @@ import uz.turgunboyevjurabek.saxovat.model.madels.clients.DeptClients
 import uz.turgunboyevjurabek.saxovat.model.madels.clients.GetAllClients
 import uz.turgunboyevjurabek.saxovat.model.madels.login.LoginRequest
 import uz.turgunboyevjurabek.saxovat.model.madels.login.LoginResponse
+import uz.turgunboyevjurabek.saxovat.model.madels.product.GetAllProduct
 import uz.turgunboyevjurabek.saxovat.model.madels.register.RegisterRequest
 import uz.turgunboyevjurabek.saxovat.model.madels.register.RegisterRespons
 import uz.turgunboyevjurabek.saxovat.utils.MySharedPreference
@@ -28,6 +29,8 @@ interface ApiService {
     @GET("clients/")
     suspend fun getAllClients(@Header("Authorization") token:String="Token 287fbe4ea8ba04f6718e0d72ecde7ef96f669bdd"):GetAllClients
 
+    @GET("products/")
+    suspend fun getAllProduct(@Header("Authorization") token:String="Token 287fbe4ea8ba04f6718e0d72ecde7ef96f669bdd"):GetAllProduct
 
 
 }

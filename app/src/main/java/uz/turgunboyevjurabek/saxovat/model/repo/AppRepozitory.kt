@@ -10,4 +10,6 @@ class AppRepository @Inject constructor(val apiService: ApiService) {
     suspend fun register(registerRequest: RegisterRequest)=apiService.registerUser(registerRequest)
     suspend fun getAllCategories()=apiService.getCategories()
     suspend fun getAllClients()=apiService.getAllClients()
+    suspend fun getAllProduct()=apiService.getAllProduct()
+
 }
