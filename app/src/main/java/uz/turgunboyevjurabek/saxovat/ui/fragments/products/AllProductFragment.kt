@@ -3,6 +3,7 @@ package uz.turgunboyevjurabek.saxovat.ui.fragments.products
 import android.annotation.SuppressLint
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -68,7 +69,9 @@ class AllProductFragment : Fragment() {
                     productAdapter.notifyDataSetChanged()
                     binding.rvProduct.adapter=productAdapter
                     binding.lottiProgress.visibility=View.GONE
-
+                    val list=GetAllProduct()
+                    list.addAll(it.data)
+                    Log.d("rasms","${list[0].image}")
                 }
             }
         })
