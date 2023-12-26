@@ -11,6 +11,9 @@ import uz.turgunboyevjurabek.saxovat.model.network.ApiService
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
+/**
+ * Network module of Dagger2 -hilt
+ */
 @InstallIn(SingletonComponent::class)
 @Module
 class NetworkModule {

@@ -15,6 +15,7 @@ import uz.turgunboyevjurabek.saxovat.adapters.categoriesAdapter.PurchaseAdapter
 import uz.turgunboyevjurabek.saxovat.databinding.FragmentPurchaseBinding
 import uz.turgunboyevjurabek.saxovat.model.madels.categories.CategoriesResponseItem
 import uz.turgunboyevjurabek.saxovat.utils.AppObject
+import uz.turgunboyevjurabek.saxovat.utils.Girgitton
 import uz.turgunboyevjurabek.saxovat.utils.Status
 import uz.turgunboyevjurabek.saxovat.vm.Categories.GetAllCategoriesViewModel
 
@@ -51,9 +52,9 @@ class PurchaseFragment : Fragment(),PurchaseAdapter.OnClickAtPurchase {
                         purchaseAdapter.updateData(it.data!!)
                         binding.rvCategories.adapter=purchaseAdapter
 
-                        val getName=arguments?.getString("keyName")
 
-                        binding.thtClient.text = getName.toString()
+
+                        binding.thtClient.text =Girgitton.name.toString()
 
                     }
                 }
@@ -73,5 +74,6 @@ class PurchaseFragment : Fragment(),PurchaseAdapter.OnClickAtPurchase {
         position: Int,
     ) {
         findNavController().navigate(R.id.allProductFragment)
+        Girgitton.category=categoriesResponseItem.id
     }
 }

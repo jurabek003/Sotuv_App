@@ -17,6 +17,7 @@ import uz.turgunboyevjurabek.saxovat.databinding.FragmentAllClientsBinding
 import uz.turgunboyevjurabek.saxovat.model.madels.clients.GetAllClients
 import uz.turgunboyevjurabek.saxovat.model.madels.clients.ResultX
 import uz.turgunboyevjurabek.saxovat.utils.AppObject
+import uz.turgunboyevjurabek.saxovat.utils.Girgitton
 import uz.turgunboyevjurabek.saxovat.utils.Status
 import uz.turgunboyevjurabek.saxovat.vm.clients.GetAllClientsViewModel
 import javax.inject.Inject
@@ -83,7 +84,8 @@ class AllClientsFragment : Fragment(),AllClientsAdapter.OnClick {
     }
 
     override fun itemClick(getAllClients: GetAllClients, position: Int) {
+        Girgitton.name=getAllClients.results[position].fullName
+        findNavController().navigate(R.id.purchaseFragment)
 
-        findNavController().navigate(R.id.purchaseFragment, bundleOf("keyName" to getAllClients.results[position].fullName))
     }
 }

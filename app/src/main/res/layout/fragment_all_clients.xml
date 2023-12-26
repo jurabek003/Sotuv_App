@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:textSize="20sp"
-            android:text="All clients"
+            android:text="Klientlar"
             android:textStyle="bold"
             android:fontFamily="@font/belgrano"
             android:layout_gravity="center"
