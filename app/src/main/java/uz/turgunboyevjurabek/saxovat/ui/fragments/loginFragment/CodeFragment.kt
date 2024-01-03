@@ -15,16 +15,25 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 import uz.turgunboyevjurabek.saxovat.R
 import uz.turgunboyevjurabek.saxovat.databinding.FragmentCodeBinding
+import uz.turgunboyevjurabek.saxovat.model.madels.register.RegisterRequest
 import uz.turgunboyevjurabek.saxovat.utils.LoginCheck
-
+import uz.turgunboyevjurabek.saxovat.utils.Status
+import uz.turgunboyevjurabek.saxovat.vm.register.RegisterViewModel
+import javax.annotation.meta.When
+@AndroidEntryPoint
 class CodeFragment : Fragment() {
     private val binding by lazy { FragmentCodeBinding.inflate(layoutInflater)}
     var count:Int=59
     private lateinit var handler:Handler
+    private val registerViewModel:RegisterViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -49,8 +58,8 @@ class CodeFragment : Fragment() {
         edtWork()
         thtInfo()
 
-        handler= Handler(Looper.getMainLooper())
-        handler.postDelayed(runnable,1000)
+//        handler= Handler(Looper.getMainLooper())
+//        handler.postDelayed(runnable,1000)
 
 
         binding.btnContinue.setOnClickListener {
@@ -64,7 +73,24 @@ class CodeFragment : Fragment() {
         }
 
         keyBoardTest()
+        apiWorking()
+    }
 
+    private fun apiWorking() {
+        val registerRequest=RegisterRequest("abs","a","a","7777","+998902223344")
+        registerViewModel.registerWorking(registerRequest).observe(requireActivity(), Observer {
+            when(it.status){
+                Status.LOADING -> {
+
+                }
+                Status.ERROR -> {
+                    Toast.makeText(requireContext(), "essis ${it.message}", Toast.LENGTH_SHORT).show()
+                }
+                Status.SUCCESS -> {
+                    Toast.makeText(requireContext(), "o'tti ${it.data}", Toast.LENGTH_SHORT).show()
+                }
+            }
+        })
     }
 
     private fun thtInfo() {
@@ -94,12 +120,12 @@ class CodeFragment : Fragment() {
             }
         }
     }
-    private fun time(){
-        binding.thtTime
+//    private fun time(){
+//        binding.thtTime
+//
+//    }
 
-    }
-
-    private var runnable=object :Runnable{
+  /*  private var runnable=object :Runnable{
         override fun run() {
             if (count>=10){
                 binding.thtTime.text="00:${count.toString()}"
@@ -117,6 +143,7 @@ class CodeFragment : Fragment() {
         }
 
     }
+   */
 
     private fun keyBoardTest(){
         val edt=binding.pinView

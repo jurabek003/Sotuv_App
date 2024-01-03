@@ -38,9 +38,11 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        /**
+         * Token ni tekshirish
+         */
         MySharedPreference.init(binding.root.context)
-        if (MySharedPreference.token.equals("null")){
+        if (MySharedPreference.token.equals("null") || MySharedPreference.token==null || MySharedPreference.token.isNullOrEmpty() ){
             login()
         }else{
             findNavController().popBackStack()
@@ -54,28 +56,52 @@ class LoginFragment : Fragment() {
 
 
         binding.btnContinue.setOnClickListener {
-            val loginRequest=LoginRequest(binding.edtUserName.text.toString(),binding.edtPassword.text.toString())
+            if (!binding.edtUserName.text.isNullOrEmpty() && !binding.edtPassword.text.isNullOrEmpty()){
+                val loginRequest=LoginRequest(binding.edtUserName.text.toString(),binding.edtPassword.text.toString())
 
-            loginViewModel.loginWorking(loginRequest).observe(requireActivity(), Observer {
-                when(it.status){
-                Status.LOADING -> {
-                    Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
+                loginViewModel.loginWorking(loginRequest).observe(requireActivity(), Observer {
+                    when(it.status){
+                        Status.LOADING -> {
+                            Toast.makeText(requireContext(), "Loading", Toast.LENGTH_SHORT).show()
+                            binding.imgLogin.visibility=View.GONE
+                            binding.lottiProgressInLogin.visibility=View.VISIBLE
+
+                            binding.btnContinue.isEnabled=false
+                            binding.edtPassword.isEnabled=false
+                            binding.edtUserName.isEnabled=false
+                        }
+
+                        Status.SUCCESS -> {
+                            Toast.makeText(requireContext(), "Uraa ${it.data}", Toast.LENGTH_SHORT).show()
+                            MySharedPreference.token=it.data?.token!!
+                           // findNavController().popBackStack()
+                            findNavController().navigate(R.id.homeFragment)
+
+                            binding.imgLogin.visibility=View.VISIBLE
+                            binding.lottiProgressInLogin.visibility=View.GONE
+
+                            binding.btnContinue.isEnabled=true
+                            binding.edtPassword.isEnabled=true
+                            binding.edtUserName.isEnabled=true
+                        }
+
+                        Status.ERROR -> {
+                            Toast.makeText(requireContext(), "${it.message}", Toast.LENGTH_SHORT).show()
+
+                            binding.imgLogin.visibility=View.VISIBLE
+                            binding.lottiProgressInLogin.visibility=View.GONE
+
+
+                            binding.btnContinue.isEnabled=true
+                            binding.edtPassword.isEnabled=true
+                            binding.edtUserName.isEnabled=true
+                        }
+
+                    }
+                })
+
             }
 
-                Status.SUCCESS -> {
-                    Toast.makeText(requireContext(), "Uraa ${it.data}", Toast.LENGTH_SHORT).show()
-                    MySharedPreference.token=it.data?.token!!
-                    findNavController().popBackStack()
-                    findNavController().navigate(R.id.homeFragment)
-
-            }
-
-                Status.ERROR -> {
-                Toast.makeText(requireContext(), "${it.message}", Toast.LENGTH_SHORT).show()
-            }
-
-                }
-            })
 
 
         }
