@@ -64,7 +64,10 @@ class PurchaseFragment : Fragment(),PurchaseAdapter.OnClickAtPurchase {
 
     override fun onResume() {
         super.onResume()
-        AppObject.binding.btnNavigation.visibility=View.VISIBLE
+        //AppObject.binding.btnNavigation.visibility=View.VISIBLE
+        AppObject.binding.linerToolbar.visibility=View.VISIBLE
+        AppObject.binding.navigationLayout.visibility=View.VISIBLE
+        AppObject.binding.thtActionName.text="Katego'riyalar"
 
 
     }

@@ -26,6 +26,7 @@ class KarzinkaFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        AppObject.binding.btnNavigation.visibility=View.VISIBLE
+        //AppObject.binding.btnNavigation.visibility=View.VISIBLE
+        AppObject.binding.navigationLayout.visibility=View.VISIBLE
     }
 }
