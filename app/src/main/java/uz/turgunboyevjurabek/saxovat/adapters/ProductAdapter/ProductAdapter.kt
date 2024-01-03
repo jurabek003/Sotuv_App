@@ -24,7 +24,7 @@ class ProductAdapter():RecyclerView.Adapter<ProductAdapter.Vh>(){
     inner class Vh(val itemProductRvBinding: ItemProductRvBinding):ViewHolder(itemProductRvBinding.root){
         fun onBind(getAllProductItem: GetAllProductItem){
             itemProductRvBinding.itemProductName.text=getAllProductItem.name
-            itemProductRvBinding.itemProductAbout.text=getAllProductItem.amount.toString()
+            itemProductRvBinding.itemProductAbout.text=getAllProductItem.amount.toString()+" ta"
 
 
             Glide.with(itemProductRvBinding.root.context)

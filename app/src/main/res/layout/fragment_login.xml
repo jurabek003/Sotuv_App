@@ -9,7 +9,18 @@
     android:gravity="center"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.loginFragment.LoginFragment">
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lotti_progress_in_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:lottie_rawRes="@raw/lotti_progrss"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="true"
+        />
+
     <ImageView
+        android:id="@+id/img_login"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:src="@drawable/login"/>
