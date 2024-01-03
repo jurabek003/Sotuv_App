@@ -41,13 +41,16 @@ class AllClientsFragment : Fragment(),AllClientsAdapter.OnClick {
 
     override fun onResume() {
         super.onResume()
-        binding.imgBack.setOnClickListener {
-            findNavController().popBackStack()
-        }
         /**
          * ButtonNavigation ni gone qilish
          */
         AppObject.binding.btnNavigation.visibility=View.GONE
+        AppObject.binding.linerToolbar.visibility=View.VISIBLE
+        AppObject.binding.navigationLayout.visibility=View.GONE
+        AppObject.binding.thtActionName.text="Klientlar"
+        AppObject.binding.imgBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

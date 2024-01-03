@@ -80,7 +80,8 @@ class AllProductFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         AppObject.binding.btnNavigation.visibility=View.GONE
-        binding.imgBack.setOnClickListener {
+        AppObject.binding.linerToolbar.visibility=View.VISIBLE
+        AppObject.binding.imgBack.setOnClickListener {
             findNavController().popBackStack()
         }
     }
