@@ -44,7 +44,7 @@ class AllClientsFragment : Fragment(),AllClientsAdapter.OnClick {
         /**
          * ButtonNavigation ni gone qilish
          */
-        AppObject.binding.btnNavigation.visibility=View.GONE
+
         AppObject.binding.linerToolbar.visibility=View.VISIBLE
         AppObject.binding.navigationLayout.visibility=View.GONE
         AppObject.binding.thtActionName.text="Klientlar"

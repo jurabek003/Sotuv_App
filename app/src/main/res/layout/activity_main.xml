@@ -7,28 +7,31 @@
     tools:context=".MainActivity">
 
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/btn_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#00B8D4"
-        android:visibility="gone"
-        app:itemActiveIndicatorStyle="@color/material_on_surface_stroke"
-        app:itemHorizontalTranslationEnabled="true"
-        app:itemIconSize="30dp"
-        app:itemIconTint="@color/white"
-        app:itemRippleColor="@color/btn_true"
-        app:itemTextAppearanceActive="@color/white"
-        app:itemTextAppearanceActiveBoldEnabled="true"
-        app:itemTextAppearanceInactive="@color/inActive"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:menu="@menu/btn_navigation" />
+<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--        android:id="@+id/btn_navigation"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="#00B8D4"-->
+<!--        android:visibility="gone"-->
+<!--        app:itemActiveIndicatorStyle="@color/material_on_surface_stroke"-->
+<!--        app:itemHorizontalTranslationEnabled="true"-->
+<!--        app:itemIconSize="30dp"-->
+<!--        app:itemIconTint="@color/white"-->
+<!--        app:itemRippleColor="@color/btn_true"-->
+<!--        app:itemTextAppearanceActive="@color/white"-->
+<!--        app:itemTextAppearanceActiveBoldEnabled="true"-->
+<!--        app:itemTextAppearanceInactive="@color/inActive"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:menu="@menu/btn_navigation" />-->
+
+
     <LinearLayout
         android:id="@+id/liner_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
+        android:background="#00B8D4"
         android:visibility="gone"
         android:elevation="20dp"
         android:orientation="horizontal"
