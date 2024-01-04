@@ -75,40 +75,47 @@ class AllProductFragment : Fragment() {
 
     }
 
-    @SuppressLint("NotifyDataSetChanged")
-    private fun getApiWorking() {
-        var category=0
-        if (Girgitton.category!=null){
-            category= Girgitton.category!!
-        }
-        Toast.makeText(requireContext(), "$category", Toast.LENGTH_SHORT).show()
+    /**
+     * Hamma mahsulotni olish uchun funksiya
+     */
+/*
+@SuppressLint("NotifyDataSetChanged")
+private fun getApiWorking() {
+    var category=0
+    if (Girgitton.category!=null){
+        category= Girgitton.category!!
+    }
+    Toast.makeText(requireContext(), "$category", Toast.LENGTH_SHORT).show()
 
-        getAllProductViewModel.getApiProduct(category).observe(requireActivity(), Observer{
-            when(it.status){
-                Status.LOADING -> {
-                    Toast.makeText(requireContext(), "${it.message}", Toast.LENGTH_SHORT).show()
-                    binding.lottiProgress.visibility=View.VISIBLE
-                }
-                Status.ERROR ->{
-                    Toast.makeText(requireContext(), "vay ${it.message}", Toast.LENGTH_SHORT).show()
-                    binding.lottiProgress.visibility=View.GONE
-                }
-                Status.SUCCESS ->{
-                    Toast.makeText(requireContext(), "ura ${it.data}", Toast.LENGTH_SHORT).show()
-
-                }
+    getAllProductViewModel.getApiProduct(category).observe(requireActivity(), Observer{
+        when(it.status){
+            Status.LOADING -> {
+                Toast.makeText(requireContext(), "${it.message}", Toast.LENGTH_SHORT).show()
+                binding.lottiProgress.visibility=View.VISIBLE
             }
-        })
-    }
+            Status.ERROR ->{
+                Toast.makeText(requireContext(), "vay ${it.message}", Toast.LENGTH_SHORT).show()
+                binding.lottiProgress.visibility=View.GONE
+            }
+            Status.SUCCESS ->{
+                Toast.makeText(requireContext(), "ura ${it.data}", Toast.LENGTH_SHORT).show()
 
-    override fun onResume() {
-        super.onResume()
-        AppObject.binding.linerToolbar.visibility=View.VISIBLE
-        AppObject.binding.navigationLayout.visibility=View.GONE
-        AppObject.binding.thtActionName.text="Mahsulotlar"
-
-        AppObject.binding.imgBack.setOnClickListener {
-            findNavController().popBackStack()
+            }
         }
+    })
+}
+ */
+
+
+
+override fun onResume() {
+    super.onResume()
+    AppObject.binding.linerToolbar.visibility=View.VISIBLE
+    AppObject.binding.navigationLayout.visibility=View.GONE
+    AppObject.binding.thtActionName.text="Mahsulotlar"
+
+    AppObject.binding.imgBack.setOnClickListener {
+        findNavController().popBackStack()
     }
+}
 }

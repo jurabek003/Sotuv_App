@@ -1,5 +1,6 @@
 package uz.turgunboyevjurabek.saxovat.model.network
 
+import android.icu.text.StringSearch
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -12,6 +13,7 @@ import uz.turgunboyevjurabek.saxovat.model.madels.login.LoginRequest
 import uz.turgunboyevjurabek.saxovat.model.madels.login.LoginResponse
 import uz.turgunboyevjurabek.saxovat.model.madels.product.GetAllProduct
 import uz.turgunboyevjurabek.saxovat.model.madels.product.GetProductOfCategoriya
+import uz.turgunboyevjurabek.saxovat.model.madels.product.GetSearchProduct
 import uz.turgunboyevjurabek.saxovat.model.madels.register.RegisterRequest
 import uz.turgunboyevjurabek.saxovat.model.madels.register.RegisterRespons
 import uz.turgunboyevjurabek.saxovat.utils.ConstItem.TOKEN
@@ -52,5 +54,11 @@ interface ApiService {
      */
     @GET("products/{id}")
     suspend fun getCategoriesProduct(@Path("id") id:String,@Header("Authorization") token:String= TOKEN ):GetProductOfCategoriya
+
+    /**
+     * Mahsulotlarni qidirish uchun
+     */
+    @GET("products/search?")
+    suspend fun searchProduct(@Query("search") search: String, @Header("Authorization") token: String= TOKEN) :GetSearchProduct
 
 }
