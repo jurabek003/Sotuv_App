@@ -57,7 +57,7 @@ class HomeFragment : Fragment() {
         /**
          * ButtonNavigation ni gone qilish
          */
-        AppObject.binding.btnNavigation.visibility=View.GONE
+
         AppObject.binding.navigationLayout.visibility=View.GONE
         AppObject.binding.linerToolbar.visibility=View.GONE
     }

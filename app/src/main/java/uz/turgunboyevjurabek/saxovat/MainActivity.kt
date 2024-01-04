@@ -41,7 +41,7 @@ cardWorking()
         /**
          * navigatsiya uchun
          */
-        binding.btnNavigation.setupWithNavController(navController)
+//        binding.btnNavigation.setupWithNavController(navController)
 
 //        binding.btnNavigation.setOnItemSelectedListener {
 //            when(it.itemId){

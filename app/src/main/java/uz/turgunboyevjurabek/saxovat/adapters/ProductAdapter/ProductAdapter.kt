@@ -18,17 +18,18 @@ import uz.turgunboyevjurabek.saxovat.R
 import uz.turgunboyevjurabek.saxovat.databinding.ItemProductRvBinding
 import uz.turgunboyevjurabek.saxovat.model.madels.product.GetAllProduct
 import uz.turgunboyevjurabek.saxovat.model.madels.product.GetAllProductItem
+import uz.turgunboyevjurabek.saxovat.model.madels.product.GetProductOfCategoriya
 
 class ProductAdapter():RecyclerView.Adapter<ProductAdapter.Vh>(){
-    private val list= GetAllProduct()
+    private val list= ArrayList<GetProductOfCategoriya>()
     inner class Vh(val itemProductRvBinding: ItemProductRvBinding):ViewHolder(itemProductRvBinding.root){
-        fun onBind(getAllProductItem: GetAllProductItem){
-            itemProductRvBinding.itemProductName.text=getAllProductItem.name
-            itemProductRvBinding.itemProductAbout.text=getAllProductItem.amount.toString()+" ta"
+        fun onBind(getProductOfCategoriya: GetProductOfCategoriya){
+            itemProductRvBinding.itemProductName.text=getProductOfCategoriya.name
+            itemProductRvBinding.itemProductAbout.text=getProductOfCategoriya.amount.toString()+" ta"
 
 
             Glide.with(itemProductRvBinding.root.context)
-                .load(getAllProductItem.image)
+                .load(getProductOfCategoriya.image)
                 .into(itemProductRvBinding.itemProductImg)
 
         }
@@ -43,7 +44,7 @@ class ProductAdapter():RecyclerView.Adapter<ProductAdapter.Vh>(){
     override fun onBindViewHolder(holder: Vh, position: Int) {
         holder.onBind(list[position])
     }
-    fun updateData(newData: ArrayList<GetAllProductItem>){
+    fun updateData(newData: ArrayList<GetProductOfCategoriya>){
         if (list.isNotEmpty()){
             list.clear()
         }
