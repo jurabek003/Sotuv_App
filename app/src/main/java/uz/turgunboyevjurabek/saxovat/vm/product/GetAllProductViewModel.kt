@@ -15,12 +15,12 @@ import javax.inject.Inject
 @HiltViewModel
 class GetAllProductViewModel @Inject constructor(private val appRepository: AppRepository) :ViewModel(){
     private val getAllProductLiveData=MutableLiveData<Resource<GetAllProduct>>()
-    fun getApiProduct(category:Int):MutableLiveData<Resource<GetAllProduct>>{
+    fun getApiProduct():MutableLiveData<Resource<GetAllProduct>>{
         viewModelScope.launch {
             try {
-                getAllProductLiveData.postValue(Resource.loading("Loading at product viewModel"))
+                getAllProductLiveData.postValue(Resource.loading("Loading at  all product viewModel"))
                 val getData= withContext(Dispatchers.IO){
-                    appRepository.getAllProduct(category)
+                    appRepository.getAllProduct()
                 }
                 getAllProductLiveData.postValue(Resource.success(getData))
             }catch (e:Exception){
