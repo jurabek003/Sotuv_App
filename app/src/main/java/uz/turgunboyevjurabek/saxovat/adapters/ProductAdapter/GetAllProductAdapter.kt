@@ -8,10 +8,10 @@ import uz.turgunboyevjurabek.saxovat.databinding.ItemSearchProductBinding
 import uz.turgunboyevjurabek.saxovat.model.madels.product.GetAllProduct
 import uz.turgunboyevjurabek.saxovat.model.madels.product.GetAllProductItem
 
-class GetAllProductAdapter:RecyclerView.Adapter<GetAllProductAdapter.Vh>() {
+class GetAllProductAdapter(val itemClickOnProduct: ItemClickOnProduct):RecyclerView.Adapter<GetAllProductAdapter.Vh>() {
     private val list= GetAllProduct()
      inner class Vh(private val itemProductRvBinding: ItemSearchProductBinding): RecyclerView.ViewHolder(itemProductRvBinding.root){
-        fun onBind(getSearchProductItem: GetAllProductItem){
+        fun onBind(getSearchProductItem: GetAllProductItem, position: Int){
             itemProductRvBinding.itemSearchNomi.text=getSearchProductItem.name
             itemProductRvBinding.itemSearchMiqdor.text=getSearchProductItem.amount.toString()+" ta"
 
@@ -27,6 +27,11 @@ class GetAllProductAdapter:RecyclerView.Adapter<GetAllProductAdapter.Vh>() {
                 .load(getSearchProductItem.image)
                 .into(itemProductRvBinding.itemSearchImg)
 
+            itemProductRvBinding.root.setOnClickListener {
+                itemClickOnProduct.selectItem(getSearchProductItem,position)
+            }
+
+
         }
     }
 
@@ -39,7 +44,7 @@ class GetAllProductAdapter:RecyclerView.Adapter<GetAllProductAdapter.Vh>() {
     }
 
     override fun onBindViewHolder(holder: Vh, position: Int) {
-        holder.onBind(list[position])
+        holder.onBind(list[position],position)
     }
     fun updateData(newData: ArrayList<GetAllProductItem>){
         if (list.isNotEmpty()){
@@ -48,5 +53,8 @@ class GetAllProductAdapter:RecyclerView.Adapter<GetAllProductAdapter.Vh>() {
         list.addAll(newData)
 
 
+    }
+    interface ItemClickOnProduct{
+        fun selectItem(getAllProductItem: GetAllProductItem,position: Int)
     }
 }

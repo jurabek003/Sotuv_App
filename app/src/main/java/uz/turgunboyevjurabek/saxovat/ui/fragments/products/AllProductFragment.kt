@@ -1,6 +1,7 @@
 package uz.turgunboyevjurabek.saxovat.ui.fragments.products
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -11,13 +12,16 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 import uz.turgunboyevjurabek.saxovat.R
 import uz.turgunboyevjurabek.saxovat.adapters.ProductAdapter.GetAllProductAdapter
 import uz.turgunboyevjurabek.saxovat.adapters.ProductAdapter.ProductAdapter
 import uz.turgunboyevjurabek.saxovat.adapters.ProductAdapter.ProductSearchAdapter
+import uz.turgunboyevjurabek.saxovat.databinding.DialogOrderBinding
 import uz.turgunboyevjurabek.saxovat.databinding.FragmentAllProductBinding
 import uz.turgunboyevjurabek.saxovat.model.madels.product.GetAllProduct
+import uz.turgunboyevjurabek.saxovat.model.madels.product.GetAllProductItem
 import uz.turgunboyevjurabek.saxovat.model.madels.product.GetProductOfCategoriya
 import uz.turgunboyevjurabek.saxovat.utils.AppObject
 import uz.turgunboyevjurabek.saxovat.utils.Status
@@ -25,7 +29,7 @@ import uz.turgunboyevjurabek.saxovat.vm.product.GetAllProductViewModel
 import uz.turgunboyevjurabek.saxovat.vm.product.search.SearchProductViewModel
 
 @AndroidEntryPoint
-class AllProductFragment : Fragment() {
+class AllProductFragment : Fragment(),GetAllProductAdapter.ItemClickOnProduct {
     private val binding by lazy { FragmentAllProductBinding.inflate(layoutInflater) }
     private val getAllProductViewModel: GetAllProductViewModel by viewModels()
     private val searchProductViewModel: SearchProductViewModel by viewModels()
@@ -64,7 +68,7 @@ class AllProductFragment : Fragment() {
                 }
                 Status.SUCCESS -> {
                     binding.lottiProgressInAllProduct.visibility=View.GONE
-                    getAllProductAdapter= GetAllProductAdapter()
+                    getAllProductAdapter= GetAllProductAdapter(this)
                     it.data?.let { it1 -> getAllProductAdapter.updateData(it1) }
                     getAllProductAdapter.notifyDataSetChanged()
                     binding.rvAllProduct.adapter=getAllProductAdapter
@@ -129,6 +133,17 @@ class AllProductFragment : Fragment() {
         }catch (e:Exception){
             Log.d("navXato",e.message.toString())
             e.printStackTrace()
+            findNavController().popBackStack()
         }
+    }
+
+    override fun selectItem(getAllProductItem: GetAllProductItem, position: Int) {
+        val dialogOrderBinding=DialogOrderBinding.inflate(layoutInflater)
+        val dialog=MaterialAlertDialogBuilder(requireContext())
+            .setView(dialogOrderBinding.root)
+            .show()
+        
+
+
     }
 }
