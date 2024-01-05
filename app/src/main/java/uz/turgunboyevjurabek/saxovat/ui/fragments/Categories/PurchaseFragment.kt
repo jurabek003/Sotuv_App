@@ -32,9 +32,7 @@ import uz.turgunboyevjurabek.saxovat.vm.product.search.SearchProductViewModel
 class PurchaseFragment : Fragment(),PurchaseAdapter.OnClickAtPurchase {
     private val binding by lazy { FragmentPurchaseBinding.inflate(layoutInflater) }
     private val getAllCategoriesViewModel:GetAllCategoriesViewModel by viewModels()
-    private val searchProductViewModel:SearchProductViewModel by viewModels()
     private lateinit var purchaseAdapter: PurchaseAdapter
-    private lateinit var productSearchAdapter: ProductSearchAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -50,7 +48,10 @@ class PurchaseFragment : Fragment(),PurchaseAdapter.OnClickAtPurchase {
         super.onViewCreated(view, savedInstanceState)
         swipeRefresh()
         getApiWorking()
-        edtSearch()
+
+        binding.searchView.setOnClickListener {
+            findNavController().navigate(R.id.allProductFragment2)
+        }
 
     }
     @SuppressLint("ResourceAsColor")
@@ -76,7 +77,6 @@ class PurchaseFragment : Fragment(),PurchaseAdapter.OnClickAtPurchase {
 
                         Toast.makeText(requireContext(), "Loading at Purchase", Toast.LENGTH_SHORT).show()
                         binding.lottiProgressInPurchase.visibility=View.VISIBLE
-                        binding.rvSearch.visibility=View.GONE
                         binding.rvCategories.visibility=View.VISIBLE
 
                     }
@@ -99,52 +99,6 @@ class PurchaseFragment : Fragment(),PurchaseAdapter.OnClickAtPurchase {
 
     }
 
-    private fun edtSearch(){
-        binding.searchView.setOnSearchClickListener {
-            Toast.makeText(requireContext(), "Search bosildi -> ", Toast.LENGTH_SHORT).show()
-        }
-
-        binding.searchView.setOnQueryTextListener(object:androidx.appcompat.widget.SearchView.OnQueryTextListener{
-            override fun onQueryTextSubmit(query: String?): Boolean {
-             return false
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                if (!newText.isNullOrEmpty()){
-                    searchResult(newText)
-                }else{
-                    getApiWorking()
-
-                }
-                return true
-            }
-        })
-    }
-    private fun searchResult(search: String){
-        searchProductViewModel.getSearchData(search).observe(requireActivity(), Observer {
-
-            when(it.status){
-                LOADING -> {
-                    binding.lottiProgressInPurchase.visibility=View.VISIBLE
-                    binding.rvCategories.visibility=View.GONE
-                    binding.rvSearch.visibility=View.VISIBLE
-                }
-                ERROR -> {
-                    Toast.makeText(requireContext(), "yomon ${it.message}", Toast.LENGTH_SHORT).show()
-                    binding.lottiProgressInPurchase.visibility=View.GONE
-                }
-                SUCCESS -> {
-//                    Toast.makeText(requireContext(), "yashi ${it.data}", Toast.LENGTH_SHORT).show()
-                    binding.lottiProgressInPurchase.visibility=View.GONE
-                    productSearchAdapter= ProductSearchAdapter()
-                    it.data?.let { it1 -> productSearchAdapter.updateData(it1) }
-                    productSearchAdapter.notifyDataSetChanged()
-                    binding.rvSearch.adapter=productSearchAdapter
-                    Log.d("searchJ",it.data.toString())
-                }
-            }
-        })
-    }
 
     override fun onResume() {
         super.onResume()
@@ -160,7 +114,7 @@ class PurchaseFragment : Fragment(),PurchaseAdapter.OnClickAtPurchase {
         categoriesResponseItem: CategoriesResponseItem,
         position: Int,
     ) {
-        findNavController().navigate(R.id.allProductFragment)
+        findNavController().navigate(R.id.selectProductFragment)
         Girgitton.category=categoriesResponseItem.id
     }
 }

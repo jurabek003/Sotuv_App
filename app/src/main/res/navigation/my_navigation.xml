@@ -38,8 +38,11 @@
             android:id="@+id/action_purchaseFragment_to_karzinkaFragment"
             app:destination="@id/karzinkaFragment" />
         <action
-            android:id="@+id/action_purchaseFragment_to_allProductFragment"
-            app:destination="@id/allProductFragment" />
+            android:id="@+id/action_purchaseFragment_to_selectProductFragment"
+            app:destination="@id/selectProductFragment" />
+        <action
+            android:id="@+id/action_purchaseFragment_to_allProductFragment2"
+            app:destination="@id/allProductFragment2" />
     </fragment>
     <fragment
         android:id="@+id/karzinkaFragment"
@@ -49,9 +52,6 @@
         <action
             android:id="@+id/action_karzinkaFragment_to_purchaseFragment"
             app:destination="@id/purchaseFragment" />
-        <action
-            android:id="@+id/action_karzinkaFragment_to_allProductFragment"
-            app:destination="@id/allProductFragment" />
     </fragment>
     <fragment
         android:id="@+id/allClientsFragment"
@@ -66,13 +66,18 @@
             app:destination="@id/purchaseFragment" />
     </fragment>
     <fragment
-        android:id="@+id/allProductFragment"
-        android:name="uz.turgunboyevjurabek.saxovat.ui.fragments.products.AllProductFragment"
-        android:label="fragment_all_product"
-        tools:layout="@layout/fragment_all_product" />
-    <fragment
         android:id="@+id/codeFragment"
         android:name="uz.turgunboyevjurabek.saxovat.ui.fragments.loginFragment.CodeFragment"
         android:label="fragment_code"
         tools:layout="@layout/fragment_code" />
+    <fragment
+        android:id="@+id/allProductFragment2"
+        android:name="uz.turgunboyevjurabek.saxovat.ui.fragments.products.AllProductFragment"
+        android:label="fragment_all_product"
+        tools:layout="@layout/fragment_all_product" />
+    <fragment
+        android:id="@+id/selectProductFragment"
+        android:name="uz.turgunboyevjurabek.saxovat.ui.fragments.products.SelectProductFragment"
+        android:label="fragment_select_product"
+        tools:layout="@layout/fragment_select_product" />
 </navigation>

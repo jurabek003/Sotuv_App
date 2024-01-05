@@ -47,7 +47,7 @@ interface ApiService {
      * Hamma Mahsulotlarni olish uchun
      */
     @GET("products/")
-    suspend fun getAllProduct( @Query("categories") categories:Int, @Header("Authorization") token: String = TOKEN):GetAllProduct
+    suspend fun getAllProduct(@Header("Authorization") token: String = TOKEN):GetAllProduct
 
     /**
      * Mahsulotlarni id catego'riya bo'yicha olish
