@@ -126,10 +126,12 @@
         app:layout_constraintTop_toTopOf="@+id/tht_kg_dona" />
 
     <ImageView
+        android:id="@+id/img_refresh"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:src="@drawable/arrows_"
         android:layout_marginEnd="15dp"
+        android:elevation="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider_2" />
@@ -143,14 +145,15 @@
         android:layout_marginTop="10dp"/>
 
     <EditText
-        android:id="@+id/editText"
-        android:layout_width="wrap_content"
+        android:id="@+id/editText1"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:background="#FFDEF3F8"
-        android:paddingHorizontal="40dp"
+        android:maxLength="6"
+        android:gravity="center"
         android:paddingVertical="5dp"
-        android:text="0.0"
+        android:hint="0.0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider_3" />
@@ -160,18 +163,146 @@
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:src="@drawable/minus"
+        android:elevation="20dp"
         android:layout_marginEnd="15dp"
-        app:layout_constraintBottom_toBottomOf="@+id/editText"
-        app:layout_constraintEnd_toStartOf="@+id/editText"
-        app:layout_constraintTop_toTopOf="@+id/editText" />
+        app:layout_constraintBottom_toBottomOf="@+id/editText1"
+        app:layout_constraintEnd_toStartOf="@+id/editText1"
+        app:layout_constraintTop_toTopOf="@+id/editText1" />
         <ImageView
         android:id="@+id/dialog_plus"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:src="@drawable/plus"
+            android:elevation="20dp"
+
             android:layout_marginStart="15dp"
-        app:layout_constraintBottom_toBottomOf="@+id/editText"
-            app:layout_constraintStart_toEndOf="@+id/editText"
-        app:layout_constraintTop_toTopOf="@+id/editText" />
+        app:layout_constraintBottom_toBottomOf="@+id/editText1"
+            app:layout_constraintStart_toEndOf="@+id/editText1"
+        app:layout_constraintTop_toTopOf="@+id/editText1" />
+
+    <TextView
+        android:id="@+id/tht_dona"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/belgrano"
+        android:text="1 dona blokdagi tovar miqdori (2.5)"
+        android:textColor="#6200EA"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/editText1"
+        app:layout_constraintStart_toStartOf="@+id/editText1"
+        app:layout_constraintTop_toBottomOf="@+id/editText1" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/divider_4"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        app:layout_constraintTop_toBottomOf="@+id/tht_dona"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="10dp"/>
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:background="#FFDEF3F8"
+        android:gravity="center"
+        android:paddingVertical="5dp"
+        android:maxLength="6"
+        android:hint="0.0"
+    app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider_4" />
+
+    <ImageView
+        android:id="@+id/dialog_minus2"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/minus"
+        android:elevation="20dp"
+
+        android:layout_marginEnd="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/editText2"
+        app:layout_constraintEnd_toStartOf="@+id/editText2"
+        app:layout_constraintTop_toTopOf="@+id/editText2" />
+    <ImageView
+        android:id="@+id/dialog_plus2"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/plus"
+        android:layout_marginStart="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/editText2"
+        app:layout_constraintStart_toEndOf="@+id/editText2"
+        app:layout_constraintTop_toTopOf="@+id/editText2" />
+
+    <TextView
+        android:id="@+id/tht_kg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/belgrano"
+        android:text="kg/dona"
+        android:elevation="20dp"
+        android:textColor="#6200EA"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/editText2"
+        app:layout_constraintStart_toStartOf="@+id/editText2"
+        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="25dp"
+        android:fontFamily="@font/belgrano"
+        android:textStyle="bold"
+        android:text="Jami summa :"
+        android:textColor="#C51162"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tht_kg" />
+
+  <TextView
+      android:id="@+id/tht_summa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/belgrano"
+        android:text="52 500.0 so'm"
+      android:textSize="17sp"
+        android:textColor="#6200EA"
+        android:layout_margin="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tht_kg" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_ortga"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        app:cornerRadius="10dp"
+        android:text="Ortga"
+        app:elevation="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_buyurtma"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:text="Buyurtma"
+        app:cornerRadius="10dp"
+        app:elevation="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_marginTop="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_buyurtma" />
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
