@@ -18,18 +18,7 @@ class ProductSearchAdapter:RecyclerView.Adapter<ProductSearchAdapter.Vh>() {
 
             itemSearchProductBinding.itemSearchNomi.text=getSearchProductItem.name
             itemSearchProductBinding.itemSearchMiqdor.text=getSearchProductItem.amount.toString()+" ta"
-
-            val sana=getSearchProductItem.createAt.substring(0..9)
-            val vaqt=getSearchProductItem.createAt.substring(11..20)
-
-            itemSearchProductBinding.itemSearchSana.text= "sana: $sana"
-            itemSearchProductBinding.itemSearchVaqt.text= "vaqt: $vaqt"
-
             itemSearchProductBinding.itemSearchLastPrice.text=getSearchProductItem.lastPrice+" so'm"
-
-            Glide.with(itemSearchProductBinding.root)
-                .load(getSearchProductItem.image)
-                .into(itemSearchProductBinding.itemSearchImg)
 
         }
     }

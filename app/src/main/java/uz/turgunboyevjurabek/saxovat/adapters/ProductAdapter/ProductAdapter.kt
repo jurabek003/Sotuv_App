@@ -20,17 +20,16 @@ import uz.turgunboyevjurabek.saxovat.model.madels.product.GetAllProduct
 import uz.turgunboyevjurabek.saxovat.model.madels.product.GetAllProductItem
 import uz.turgunboyevjurabek.saxovat.model.madels.product.GetProductOfCategoriya
 
-class ProductAdapter():RecyclerView.Adapter<ProductAdapter.Vh>(){
+class ProductAdapter(val itemSelect: ItemSelect):RecyclerView.Adapter<ProductAdapter.Vh>(){
     private val list= ArrayList<GetProductOfCategoriya>()
     inner class Vh(val itemProductRvBinding: ItemProductRvBinding):ViewHolder(itemProductRvBinding.root){
-        fun onBind(getProductOfCategoriya: GetProductOfCategoriya){
+        fun onBind(getProductOfCategoriya: GetProductOfCategoriya,position: Int){
             itemProductRvBinding.itemProductName.text=getProductOfCategoriya.name
-            itemProductRvBinding.itemProductAbout.text=getProductOfCategoriya.amount.toString()+" ta"
-
-
-            Glide.with(itemProductRvBinding.root.context)
-                .load(getProductOfCategoriya.image)
-                .into(itemProductRvBinding.itemProductImg)
+            itemProductRvBinding.itemProductMiqdori.text=getProductOfCategoriya.amount.toString()+" ta"
+            itemProductRvBinding.itemProductPuli.text=getProductOfCategoriya.lastPrice+" so'm"
+            itemProductRvBinding.root.setOnClickListener {
+                itemSelect.itemClick(getProductOfCategoriya,position)
+            }
 
         }
     }
@@ -42,7 +41,7 @@ class ProductAdapter():RecyclerView.Adapter<ProductAdapter.Vh>(){
     override fun getItemCount(): Int =list.size
 
     override fun onBindViewHolder(holder: Vh, position: Int) {
-        holder.onBind(list[position])
+        holder.onBind(list[position],position)
     }
     fun updateData(newData: ArrayList<GetProductOfCategoriya>){
         if (list.isNotEmpty()){
@@ -51,5 +50,8 @@ class ProductAdapter():RecyclerView.Adapter<ProductAdapter.Vh>(){
             list.addAll(newData)
 
 
+    }
+    interface ItemSelect{
+        fun itemClick(getProductOfCategoriya: GetProductOfCategoriya,position: Int)
     }
 }
