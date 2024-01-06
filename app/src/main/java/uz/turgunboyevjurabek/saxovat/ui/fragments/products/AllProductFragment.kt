@@ -126,20 +126,31 @@ class AllProductFragment : Fragment(),GetAllProductAdapter.ItemClickOnProduct {
         AppObject.binding.thtActionName.text="Hamma Mahsullotlar"
         AppObject.binding.linerToolbar.visibility=View.VISIBLE
         AppObject.binding.navigationLayout.visibility=View.GONE
-        try {
-            AppObject.binding.imgBack.setOnClickListener {
-                findNavController().popBackStack()
-            }
-        }catch (e:Exception){
-            Log.d("navXato",e.message.toString())
-            e.printStackTrace()
+        AppObject.binding.imgBack.setOnClickListener {
             findNavController().popBackStack()
         }
+//        try {
+//            AppObject.binding.imgBack.setOnClickListener {
+//                findNavController().popBackStack()
+//            }
+//        }catch (e:Exception){
+//            Log.d("navXato",e.message.toString())
+//            e.printStackTrace()
+//            findNavController().popBackStack()
+//        }
     }
 
+    @SuppressLint("SetTextI18n")
     override fun selectItem(getAllProductItem: GetAllProductItem, position: Int) {
         val dialogOrderBinding=DialogOrderBinding.inflate(layoutInflater)
         val view=dialogOrderBinding.root
+
+        dialogOrderBinding.dialogItemName.text=getAllProductItem.name
+        dialogOrderBinding.dialogItemNarxi.text=getAllProductItem.lastPrice
+        dialogOrderBinding.qoldiq.text=getAllProductItem.amount.toString()
+        val sana=getAllProductItem.createAt.substring(0..9)
+        val vaqt=getAllProductItem.createAt.substring(11..18)
+        dialogOrderBinding.sanaVaqt.text= "$sana/$vaqt"
 
         val dialog=MaterialAlertDialogBuilder(requireContext())
             .setView(view)
@@ -152,7 +163,7 @@ class AllProductFragment : Fragment(),GetAllProductAdapter.ItemClickOnProduct {
         dialogOrderBinding.btnOrtga.setOnClickListener {
             dialog.cancel()
         }
-        firstEdtText()
+
         /**
          * Birinchi edtText uchun
          */
@@ -202,7 +213,5 @@ class AllProductFragment : Fragment(),GetAllProductAdapter.ItemClickOnProduct {
 
     }
 
-    private fun firstEdtText() {
 
-    }
 }

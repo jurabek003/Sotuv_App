@@ -18,14 +18,9 @@ class GetAllProductAdapter(val itemClickOnProduct: ItemClickOnProduct):RecyclerV
             val sana=getSearchProductItem.createAt.substring(0..9)
             val vaqt=getSearchProductItem.createAt.substring(11..20)
 
-            itemProductRvBinding.itemSearchSana.text= "sana: $sana"
-            itemProductRvBinding.itemSearchVaqt.text= "vaqt: $vaqt"
 
             itemProductRvBinding.itemSearchLastPrice.text=getSearchProductItem.lastPrice+" so'm"
 
-            Glide.with(itemProductRvBinding.root)
-                .load(getSearchProductItem.image)
-                .into(itemProductRvBinding.itemSearchImg)
 
             itemProductRvBinding.root.setOnClickListener {
                 itemClickOnProduct.selectItem(getSearchProductItem,position)
