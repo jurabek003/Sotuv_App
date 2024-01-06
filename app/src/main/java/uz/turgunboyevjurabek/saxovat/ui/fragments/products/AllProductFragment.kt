@@ -139,11 +139,70 @@ class AllProductFragment : Fragment(),GetAllProductAdapter.ItemClickOnProduct {
 
     override fun selectItem(getAllProductItem: GetAllProductItem, position: Int) {
         val dialogOrderBinding=DialogOrderBinding.inflate(layoutInflater)
-        val dialog=MaterialAlertDialogBuilder(requireContext())
-            .setView(dialogOrderBinding.root)
-            .show()
-        
+        val view=dialogOrderBinding.root
 
+        val dialog=MaterialAlertDialogBuilder(requireContext())
+            .setView(view)
+            .setCancelable(false)
+            .show()
+        var plus1:Double=0.0
+        var minus1:Double=0.0
+        var plus2:Double=0.0
+        var minus2:Double=0.0
+        dialogOrderBinding.btnOrtga.setOnClickListener {
+            dialog.cancel()
+        }
+        firstEdtText()
+        /**
+         * Birinchi edtText uchun
+         */
+        dialogOrderBinding.dialogPlus.setOnClickListener {
+            if (!dialogOrderBinding.editText1.text.isNullOrEmpty()){
+                plus1=dialogOrderBinding.editText1.text.toString().toDouble()
+                plus1++
+                dialogOrderBinding.editText1.setText(plus1.toString())
+            }else{
+                dialogOrderBinding.editText1.setText("1.0")
+            }
+        }
+        dialogOrderBinding.dialogMinus.setOnClickListener {
+            if (!dialogOrderBinding.editText1.text.isNullOrEmpty()  ) {
+                minus1=dialogOrderBinding.editText1.text.toString().toDouble()
+                if (minus1!=0.0){
+                    minus1--
+                    dialogOrderBinding.editText1.setText(minus1.toString())
+                }else{
+                    dialogOrderBinding.editText1.text.clear()
+                }
+            }
+        }
+        /**
+         * ikkinchi edtText uchun
+         */
+        dialogOrderBinding.dialogPlus2.setOnClickListener {
+            if (!dialogOrderBinding.editText2.text.isNullOrEmpty()){
+                plus2=dialogOrderBinding.editText2.text.toString().toDouble()
+                plus2++
+                dialogOrderBinding.editText2.setText(plus2.toString())
+            }else{
+                dialogOrderBinding.editText2.setText("1.0")
+            }
+        }
+        dialogOrderBinding.dialogMinus2.setOnClickListener {
+            if (!dialogOrderBinding.editText2.text.isNullOrEmpty()  ) {
+                minus2=dialogOrderBinding.editText2.text.toString().toDouble()
+                if (minus2!=0.0){
+                    minus2--
+                    dialogOrderBinding.editText2.setText(minus2.toString())
+                }else{
+                    dialogOrderBinding.editText2.text.clear()
+                }
+            }
+        }
+
+    }
+
+    private fun firstEdtText() {
 
     }
 }
