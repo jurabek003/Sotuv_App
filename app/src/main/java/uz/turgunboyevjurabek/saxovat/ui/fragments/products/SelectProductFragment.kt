@@ -73,11 +73,12 @@ override fun onResume() {
     super.onResume()
     AppObject.binding.linerToolbar.visibility=View.VISIBLE
     AppObject.binding.navigationLayout.visibility=View.GONE
-    AppObject.binding.thtActionName.text="Mahsulotlar"
+    AppObject.binding.thtActionName.text="Tanlangan mahsulot"
 
     AppObject.binding.imgBack.setOnClickListener {
         findNavController().popBackStack()
     }
+
 }
 
     override fun itemClick(getProductOfCategoriya: GetProductOfCategoriya, position: Int) {
