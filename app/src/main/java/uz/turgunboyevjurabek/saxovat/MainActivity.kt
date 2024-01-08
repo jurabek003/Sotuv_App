@@ -25,18 +25,19 @@ cardWorking()
 
     }
 
+    override fun onStart() {
+        super.onStart()
+        /**
+         * Faqat light mode turishi uchun
+         */
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+    }
     override fun onResume() {
         super.onResume()
 
         AppObject.binding = binding
         AppObject.fragmentManager = supportFragmentManager
         val navController = findNavController(R.id.my_navigation_host)
-
-        /**
-         * Faqat light mode turishi uchun
-         */
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-
 
         /**
          * navigatsiya uchun
