@@ -2,6 +2,7 @@ package uz.turgunboyevjurabek.saxovat.ui.fragments.products
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
+import android.icu.text.DecimalFormat
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -156,6 +157,7 @@ class AllProductFragment : Fragment(),GetAllProductAdapter.ItemClickOnProduct {
             .setView(view)
             .setCancelable(false)
             .show()
+        var summa=getAllProductItem.lastPrice
         var plus1:Double=0.0
         var minus1:Double=0.0
         var plus2:Double=0.0
@@ -168,12 +170,26 @@ class AllProductFragment : Fragment(),GetAllProductAdapter.ItemClickOnProduct {
          * Birinchi edtText uchun
          */
         dialogOrderBinding.dialogPlus.setOnClickListener {
-            if (!dialogOrderBinding.editText1.text.isNullOrEmpty()){
-                plus1=dialogOrderBinding.editText1.text.toString().toDouble()
+            if (!dialogOrderBinding.editText1.text.isNullOrEmpty()) {
+                plus1 = dialogOrderBinding.editText1.text.toString().toDouble()
                 plus1++
                 dialogOrderBinding.editText1.setText(plus1.toString())
+                var multiplier = plus1
+                var lastSumma = summa.toDouble() * multiplier
+
+                val formattedNumber = if (lastSumma.toLong() in 10000..9999999999) {
+                    val formattedString = String.format("%,d", lastSumma.toLong())
+                    formattedString.replace(",", " ") // Vergulni bo'shatish
+                }else{
+                    lastSumma.toString()
+                }
+
+                dialogOrderBinding.thtSumma.text= "$formattedNumber so'm"
+
             }else{
                 dialogOrderBinding.editText1.setText("1.0")
+                dialogOrderBinding.thtSumma.text = "$summa so'm"
+
             }
         }
         dialogOrderBinding.dialogMinus.setOnClickListener {
@@ -212,6 +228,9 @@ class AllProductFragment : Fragment(),GetAllProductAdapter.ItemClickOnProduct {
         }
 
     }
-
+//    fun formatNumber(number: Double): String {
+//        val formatter = DecimalFormat("0.#########E0")
+//        return formatter.format(number)
+//    }
 
 }
