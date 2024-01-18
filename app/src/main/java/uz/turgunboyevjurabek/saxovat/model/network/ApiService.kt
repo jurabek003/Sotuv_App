@@ -8,6 +8,7 @@ import retrofit2.http.POST
 import retrofit2.http.Path
 import retrofit2.http.Query
 import uz.turgunboyevjurabek.saxovat.model.madels.categories.CategoriesResponseItem
+import uz.turgunboyevjurabek.saxovat.model.madels.categories.karzinka.GetAllCardOrder
 import uz.turgunboyevjurabek.saxovat.model.madels.clients.GetAllClients
 import uz.turgunboyevjurabek.saxovat.model.madels.login.LoginRequest
 import uz.turgunboyevjurabek.saxovat.model.madels.login.LoginResponse
@@ -60,5 +61,12 @@ interface ApiService {
      */
     @GET("products/search?")
     suspend fun searchProduct(@Query("search") search: String, @Header("Authorization") token: String= TOKEN) :GetSearchProduct
+
+    /**
+     * Hamma orderni olish client id bo'yicha
+     */
+    @GET("order/card/list?")
+    suspend fun getAllOrderByClientId(@Query("client") id:Int,@Header("Authorization") token: String= TOKEN):GetAllCardOrder
+
 
 }

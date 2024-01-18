@@ -49,18 +49,13 @@
         android:name="uz.turgunboyevjurabek.saxovat.ui.fragments.Categories.KarzinkaFragment"
         android:label="fragment_karzinka"
         tools:layout="@layout/fragment_karzinka" >
-        <action
-            android:id="@+id/action_karzinkaFragment_to_purchaseFragment"
-            app:destination="@id/purchaseFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/allClientsFragment"
         android:name="uz.turgunboyevjurabek.saxovat.ui.fragments.client.AllClientsFragment"
         android:label="fragment_all_clients"
         tools:layout="@layout/fragment_all_clients" >
-        <action
-            android:id="@+id/action_allClientsFragment_to_karzinkaFragment"
-            app:destination="@id/karzinkaFragment" />
         <action
             android:id="@+id/action_allClientsFragment_to_purchaseFragment"
             app:destination="@id/purchaseFragment" />
