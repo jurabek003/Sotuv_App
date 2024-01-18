@@ -6,7 +6,7 @@ import uz.turgunboyevjurabek.saxovat.model.madels.register.RegisterRequest
 import uz.turgunboyevjurabek.saxovat.model.network.ApiService
 import javax.inject.Inject
 
-class AppRepository @Inject constructor(val apiService: ApiService) {
+class AppRepository @Inject constructor(private val apiService: ApiService) {
     suspend fun login(loginRequest: LoginRequest)=apiService.postLogin(loginRequest)
     suspend fun register(registerRequest: RegisterRequest)=apiService.registerUser(registerRequest)
     suspend fun getAllCategories()=apiService.getCategories()
@@ -14,5 +14,7 @@ class AppRepository @Inject constructor(val apiService: ApiService) {
     suspend fun getAllProduct()=apiService.getAllProduct()
     suspend fun getProductCate(id:String)=apiService.getCategoriesProduct(id)
     suspend fun getSearchProduct(search: String)=apiService.searchProduct(search)
+    suspend fun getAllOrderByClientId(id:Int)=apiService.getAllOrderByClientId(id)
+
 
 }

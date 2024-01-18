@@ -11,22 +11,22 @@ import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.HiltAndroidApp
 import uz.turgunboyevjurabek.saxovat.databinding.ActivityMainBinding
 import uz.turgunboyevjurabek.saxovat.utils.AppObject
+import uz.turgunboyevjurabek.saxovat.utils.Girgitton
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
-    private var boolean:Boolean =false
+    var boolean:Boolean=false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
-cardWorking()
-
 
     }
 
     override fun onStart() {
         super.onStart()
+
         /**
          * Faqat light mode turishi uchun
          */
@@ -34,10 +34,13 @@ cardWorking()
     }
     override fun onResume() {
         super.onResume()
-
         AppObject.binding = binding
         AppObject.fragmentManager = supportFragmentManager
         val navController = findNavController(R.id.my_navigation_host)
+
+        boolean=false
+        cardWorkingPurchase()
+
 
         /**
          * navigatsiya uchun
@@ -57,13 +60,13 @@ cardWorking()
             navController.popBackStack()
             navController.navigate(R.id.purchaseFragment)
             boolean=false
-            cardWorking()
+            cardWorkingPurchase()
         }
         binding.card2.setOnClickListener {
             navController.popBackStack()
             navController.navigate(R.id.karzinkaFragment)
             boolean=true
-            cardWorking()
+            cardWorkingKarzinka()
         }
 
 
@@ -71,10 +74,11 @@ cardWorking()
 
 
 
-        cardWorking()
+        //cardWorking()
     }
 
-    private fun cardWorking() {
+     fun cardWorkingPurchase() {
+
         if (!boolean){
             // card 1 uchun
             binding.tht1.textSize=18f
@@ -86,7 +90,10 @@ cardWorking()
             binding.card2.strokeWidth=1
             binding.card2.strokeColor=resources.getColor(R.color.btn_false)
 
-        }else{
+        }
+    }
+    fun cardWorkingKarzinka(){
+        if (boolean){
             // card 1 uchun
             binding.tht1.textSize=16f
             binding.card1.strokeWidth=1
@@ -99,3 +106,4 @@ cardWorking()
         }
     }
 }
+

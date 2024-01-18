@@ -88,6 +88,8 @@ class AllClientsFragment : Fragment(),AllClientsAdapter.OnClick {
 
     override fun itemClick(getAllClients: GetAllClients, position: Int) {
         Girgitton.name=getAllClients.results[position].fullName
+        Girgitton.getAllClients=getAllClients
+        Girgitton.clientId=getAllClients.results[position].id
         findNavController().navigate(R.id.purchaseFragment)
 
     }
