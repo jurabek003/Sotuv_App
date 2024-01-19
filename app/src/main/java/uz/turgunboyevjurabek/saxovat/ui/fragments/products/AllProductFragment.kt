@@ -21,12 +21,14 @@ import uz.turgunboyevjurabek.saxovat.adapters.ProductAdapter.ProductAdapter
 import uz.turgunboyevjurabek.saxovat.adapters.ProductAdapter.ProductSearchAdapter
 import uz.turgunboyevjurabek.saxovat.databinding.DialogOrderBinding
 import uz.turgunboyevjurabek.saxovat.databinding.FragmentAllProductBinding
+import uz.turgunboyevjurabek.saxovat.model.madels.order.PostOrderCardRequest
 import uz.turgunboyevjurabek.saxovat.model.madels.product.GetAllProduct
 import uz.turgunboyevjurabek.saxovat.model.madels.product.GetAllProductItem
 import uz.turgunboyevjurabek.saxovat.model.madels.product.GetProductOfCategoriya
 import uz.turgunboyevjurabek.saxovat.utils.AppObject
 import uz.turgunboyevjurabek.saxovat.utils.Girgitton
 import uz.turgunboyevjurabek.saxovat.utils.Status
+import uz.turgunboyevjurabek.saxovat.vm.order.PostOrderCardViewModel
 import uz.turgunboyevjurabek.saxovat.vm.product.GetAllProductViewModel
 import uz.turgunboyevjurabek.saxovat.vm.product.search.SearchProductViewModel
 
@@ -35,7 +37,7 @@ class AllProductFragment : Fragment(),GetAllProductAdapter.ItemClickOnProduct {
     private val binding by lazy { FragmentAllProductBinding.inflate(layoutInflater) }
     private val getAllProductViewModel: GetAllProductViewModel by viewModels()
     private val searchProductViewModel: SearchProductViewModel by viewModels()
-
+    private val postOrderCardViewModel:PostOrderCardViewModel by viewModels()
     private lateinit var getAllProductAdapter: GetAllProductAdapter
     private lateinit var productSearchAdapter: ProductSearchAdapter
 
@@ -232,13 +234,34 @@ class AllProductFragment : Fragment(),GetAllProductAdapter.ItemClickOnProduct {
 
         dialogOrderBinding.btnBuyurtma.setOnClickListener {
             dialog.cancel()
-            val lastAmount=dialogOrderBinding.editText1.text.toString().toInt()
+            val lastAmount=dialogOrderBinding.editText1.text.toString().toDouble().toInt()
             val productId=getAllProductItem.id
             val clientId=Girgitton.clientId
+            val postOrderCardRequest=PostOrderCardRequest(productId,clientId!!,summa,lastAmount)
+            postOrderCardWithDialog(postOrderCardRequest)
 
         }
 
     }
+
+    private fun postOrderCardWithDialog(postOrderCardRequest: PostOrderCardRequest) {
+
+        postOrderCardViewModel.postData(postOrderCardRequest).observe(requireActivity(), Observer {
+            when(it.status){
+                Status.LOADING -> {
+
+                }
+                Status.ERROR -> {
+                    Toast.makeText(requireContext(), "ehh ${it.message}", Toast.LENGTH_SHORT).show()
+                }
+                Status.SUCCESS -> {
+                    Toast.makeText(requireContext(), "joningdan ${it.data}", Toast.LENGTH_SHORT).show()
+                }
+            }
+        })
+
+    }
+
     private fun formatNumber(number: Double): String {
         val formattedNumber = if (number.toLong() in 10000..9999999999) {
             val formattedString = String.format("%,d", number.toLong())
