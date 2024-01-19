@@ -12,6 +12,8 @@ import uz.turgunboyevjurabek.saxovat.model.madels.categories.karzinka.GetAllCard
 import uz.turgunboyevjurabek.saxovat.model.madels.clients.GetAllClients
 import uz.turgunboyevjurabek.saxovat.model.madels.login.LoginRequest
 import uz.turgunboyevjurabek.saxovat.model.madels.login.LoginResponse
+import uz.turgunboyevjurabek.saxovat.model.madels.order.PostOrderCardRequest
+import uz.turgunboyevjurabek.saxovat.model.madels.order.PostOrderCardResponse
 import uz.turgunboyevjurabek.saxovat.model.madels.product.GetAllProduct
 import uz.turgunboyevjurabek.saxovat.model.madels.product.GetProductOfCategoriya
 import uz.turgunboyevjurabek.saxovat.model.madels.product.GetSearchProduct
@@ -71,8 +73,6 @@ interface ApiService {
      * Dialog bilan buyurtma junatish
      */
     @POST("order/card/create/")
-    suspend fun postOrderByCard(@Query("product") product: Int,@Query("client") clients: Int,
-                                @Query("price") price: String,@Query("quantity") quantity :String,
-                                @Header("Authorization") token: String= TOKEN)
+    suspend fun postOrderByCard(@Body postOrderCardRequest: PostOrderCardRequest,@Header("Authorization") token: String= TOKEN):PostOrderCardResponse
 
 }
