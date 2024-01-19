@@ -66,7 +66,7 @@
         android:layout_marginEnd="15dp"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/belgrano"
-        android:text="220000.0"
+        android:text="0.0"
         android:textSize="17sp"
         android:textColor="#6200EA"
         app:layout_constraintTop_toBottomOf="@+id/divider_1"
@@ -97,7 +97,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/belgrano"
-        android:text="2287.5"
+        android:text="0.0"
         android:textColor="#6200EA"
         android:textSize="17sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -120,7 +120,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:fontFamily="@font/belgrano"
-        android:text="20:32:12 / 30.12.2003"
+        android:text="00:00:00 / 00.00.0000"
         android:textColor="#6200EA"
         app:layout_constraintBottom_toBottomOf="@+id/tht_kg_dona"
         app:layout_constraintStart_toEndOf="@+id/tht_kg_dona"
@@ -264,17 +264,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tht_kg" />
 
-  <TextView
-      android:id="@+id/tht_summa"
+    <TextView
+        android:id="@+id/tht_summa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/belgrano"
-        android:text="52 500.0 so'm"
-      android:textSize="17sp"
+        android:text="0.0"
         android:textColor="#6200EA"
+        android:textSize="17sp"
+
+        app:layout_constraintBottom_toBottomOf="@+id/tht_cons_sum"
+        app:layout_constraintEnd_toStartOf="@+id/tht_cons_sum"
+        app:layout_constraintTop_toTopOf="@+id/tht_cons_sum" />
+
+    <TextView
+        android:id="@+id/tht_cons_sum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_margin="25dp"
+        android:fontFamily="@font/belgrano"
+        android:text=" so'm"
+        android:textColor="#6200EA"
+        android:textSize="17sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tht_kg" />
+        app:layout_constraintTop_toBottomOf="@+id/tht_kg"  />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_ortga"

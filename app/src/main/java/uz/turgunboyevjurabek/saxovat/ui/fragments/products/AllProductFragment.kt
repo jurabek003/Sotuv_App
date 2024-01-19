@@ -25,6 +25,7 @@ import uz.turgunboyevjurabek.saxovat.model.madels.product.GetAllProduct
 import uz.turgunboyevjurabek.saxovat.model.madels.product.GetAllProductItem
 import uz.turgunboyevjurabek.saxovat.model.madels.product.GetProductOfCategoriya
 import uz.turgunboyevjurabek.saxovat.utils.AppObject
+import uz.turgunboyevjurabek.saxovat.utils.Girgitton
 import uz.turgunboyevjurabek.saxovat.utils.Status
 import uz.turgunboyevjurabek.saxovat.vm.product.GetAllProductViewModel
 import uz.turgunboyevjurabek.saxovat.vm.product.search.SearchProductViewModel
@@ -146,8 +147,13 @@ class AllProductFragment : Fragment(),GetAllProductAdapter.ItemClickOnProduct {
         val dialogOrderBinding=DialogOrderBinding.inflate(layoutInflater)
         val view=dialogOrderBinding.root
 
+        val lastSummaConst=getAllProductItem.lastPrice.toDouble()
+        Log.d("no'l",lastSummaConst.toString())
+       val formattedNumberConst=formatNumber(lastSummaConst)
+
+
         dialogOrderBinding.dialogItemName.text=getAllProductItem.name
-        dialogOrderBinding.dialogItemNarxi.text=getAllProductItem.lastPrice
+        dialogOrderBinding.dialogItemNarxi.text= "$formattedNumberConst so'm"
         dialogOrderBinding.qoldiq.text=getAllProductItem.amount.toString()
         val sana=getAllProductItem.createAt.substring(0..9)
         val vaqt=getAllProductItem.createAt.substring(11..18)
@@ -176,19 +182,12 @@ class AllProductFragment : Fragment(),GetAllProductAdapter.ItemClickOnProduct {
                 dialogOrderBinding.editText1.setText(plus1.toString())
                 var multiplier = plus1
                 var lastSumma = summa.toDouble() * multiplier
-
-                val formattedNumber = if (lastSumma.toLong() in 10000..9999999999) {
-                    val formattedString = String.format("%,d", lastSumma.toLong())
-                    formattedString.replace(",", " ") // Vergulni bo'shatish
-                }else{
-                    lastSumma.toString()
-                }
-
-                dialogOrderBinding.thtSumma.text= "$formattedNumber so'm"
-
+                val formatNumber=formatNumber(lastSumma.toDouble())
+                dialogOrderBinding.thtSumma.text= formatNumber
             }else{
+                val formatNumberElse=formatNumber(summa.toDouble())
                 dialogOrderBinding.editText1.setText("1.0")
-                dialogOrderBinding.thtSumma.text = "$summa so'm"
+                dialogOrderBinding.thtSumma.text =formatNumberElse
 
             }
         }
@@ -198,8 +197,12 @@ class AllProductFragment : Fragment(),GetAllProductAdapter.ItemClickOnProduct {
                 if (minus1!=0.0){
                     minus1--
                     dialogOrderBinding.editText1.setText(minus1.toString())
+                    val lastPrice=minus1*summa.toDouble()
+                    val formattedMinusNumber=formatNumber(lastPrice.toDouble())
+                    dialogOrderBinding.thtSumma.text=formattedMinusNumber
                 }else{
                     dialogOrderBinding.editText1.text.clear()
+                    dialogOrderBinding.thtSumma.text="0.0"
                 }
             }
         }
@@ -227,10 +230,23 @@ class AllProductFragment : Fragment(),GetAllProductAdapter.ItemClickOnProduct {
             }
         }
 
+        dialogOrderBinding.btnBuyurtma.setOnClickListener {
+            dialog.cancel()
+            val lastAmount=dialogOrderBinding.editText1.text.toString().toInt()
+            val productId=getAllProductItem.id
+            val clientId=Girgitton.clientId
+
+        }
+
     }
-//    fun formatNumber(number: Double): String {
-//        val formatter = DecimalFormat("0.#########E0")
-//        return formatter.format(number)
-//    }
+    private fun formatNumber(number: Double): String {
+        val formattedNumber = if (number.toLong() in 10000..9999999999) {
+            val formattedString = String.format("%,d", number.toLong())
+            formattedString.replace(",", " ") // Vergulni bo'shatish
+        }else{
+            number.toString()
+        }
+        return formattedNumber
+    }
 
 }

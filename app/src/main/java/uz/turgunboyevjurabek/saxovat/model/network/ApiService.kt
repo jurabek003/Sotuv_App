@@ -67,6 +67,12 @@ interface ApiService {
      */
     @GET("order/card/list?")
     suspend fun getAllOrderByClientId(@Query("client") id:Int,@Header("Authorization") token: String= TOKEN):GetAllCardOrder
-
+    /**
+     * Dialog bilan buyurtma junatish
+     */
+    @POST("order/card/create/")
+    suspend fun postOrderByCard(@Query("product") product: Int,@Query("client") clients: Int,
+                                @Query("price") price: String,@Query("quantity") quantity :String,
+                                @Header("Authorization") token: String= TOKEN)
 
 }
