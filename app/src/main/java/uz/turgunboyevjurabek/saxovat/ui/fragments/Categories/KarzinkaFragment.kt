@@ -25,7 +25,7 @@ class KarzinkaFragment : Fragment() {
     private lateinit var getAllOrderByClientIdAdapter: GetAllOrderByClientIdAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        Girgitton.boolean=true
     }
 
     override fun onCreateView(

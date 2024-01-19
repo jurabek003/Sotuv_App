@@ -3,6 +3,7 @@ package uz.turgunboyevjurabek.saxovat
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
@@ -22,11 +23,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-    }
+        cardWorkingPurchase()
 
+        cardWorkingKarzinka()
+
+    }
     override fun onStart() {
         super.onStart()
-
         /**
          * Faqat light mode turishi uchun
          */
@@ -37,9 +40,6 @@ class MainActivity : AppCompatActivity() {
         AppObject.binding = binding
         AppObject.fragmentManager = supportFragmentManager
         val navController = findNavController(R.id.my_navigation_host)
-
-        boolean=false
-        cardWorkingPurchase()
 
 
         /**
@@ -59,16 +59,15 @@ class MainActivity : AppCompatActivity() {
         binding.card1.setOnClickListener {
             navController.popBackStack()
             navController.navigate(R.id.purchaseFragment)
-            boolean=false
+            Girgitton.boolean=false
             cardWorkingPurchase()
         }
         binding.card2.setOnClickListener {
             navController.popBackStack()
             navController.navigate(R.id.karzinkaFragment)
-            boolean=true
+            Girgitton.boolean=true
             cardWorkingKarzinka()
         }
-
 
 
 
@@ -79,7 +78,7 @@ class MainActivity : AppCompatActivity() {
 
      fun cardWorkingPurchase() {
 
-        if (!boolean){
+        if (!Girgitton.boolean){
             // card 1 uchun
             binding.tht1.textSize=18f
             binding.card1.strokeWidth=3
@@ -93,7 +92,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
     fun cardWorkingKarzinka(){
-        if (boolean){
+        if (Girgitton.boolean){
             // card 1 uchun
             binding.tht1.textSize=16f
             binding.card1.strokeWidth=1

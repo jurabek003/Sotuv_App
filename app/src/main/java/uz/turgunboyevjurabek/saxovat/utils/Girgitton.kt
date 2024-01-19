@@ -8,4 +8,5 @@ object Girgitton {
     var getAllClients:GetAllClients?=null
     var clientId:Int?=null
 
+    var boolean:Boolean=false
 }

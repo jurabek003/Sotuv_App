@@ -35,7 +35,7 @@ class PurchaseFragment : Fragment(),PurchaseAdapter.OnClickAtPurchase {
     private lateinit var purchaseAdapter: PurchaseAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        Girgitton.boolean=false
     }
 
     override fun onCreateView(
