@@ -17,7 +17,8 @@ class GetAllOrderByClientIdAdapter():RecyclerView.Adapter<GetAllOrderByClientIdA
             itemAllOrderRvBinding.itemOrderPuli.text=result.price +" so'm"
             val date=result.createdAt.substring(0..9)
             val time=result.createdAt.substring(11..18)
-            itemAllOrderRvBinding.itemOrderSana.text= "sana: $date  vaqt: $time"
+            itemAllOrderRvBinding.itemOrderSana.text=date
+            itemAllOrderRvBinding.itemOrderVaqt.text=time
         }
     }
 

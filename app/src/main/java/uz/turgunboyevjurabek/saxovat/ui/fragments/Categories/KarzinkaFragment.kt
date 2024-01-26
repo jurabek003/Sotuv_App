@@ -78,6 +78,17 @@ class KarzinkaFragment : Fragment() {
             findNavController().popBackStack()
         }
 
+        val binding2=AppObject.binding
+
+        // card 1 uchun
+        binding2.tht1.textSize=16f
+        binding2.card1.strokeWidth=1
+        binding2.card1.strokeColor=resources.getColor(R.color.btn_false)
+        // card 2 uchun
+        binding2.tht2.textSize=18f
+        binding2.card2.strokeWidth=3
+        binding2.card2.strokeColor=resources.getColor(R.color.btn_true)
+
 
     }
 }
