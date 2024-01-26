@@ -15,21 +15,64 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
             <TextView
                 android:id="@+id/item_order_sana"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
                 android:fontFamily="@font/belgrano"
+                android:maxWidth="200dp"
                 android:text="12.12.1212"
                 android:textColor="#6200EA"
-                android:maxWidth="200dp"
-                android:textSize="18sp"
+                android:layout_marginStart="5dp"
+                android:textSize="16sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/item_order_vaqt"
+                app:layout_constraintStart_toEndOf="@+id/item_sana"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/item_sana"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="normal"
+                android:fontFamily="@font/belgrano"
+                android:textSize="14.sp"
+                android:text="sana:"
+                android:textColor="@color/black"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_margin="8dp"
                 />
+
+            <TextView
+                android:id="@+id/item_order_vaqt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/belgrano"
+                android:maxWidth="200dp"
+                android:text="12:00"
+                android:layout_marginStart="5dp"
+                android:textColor="#6200EA"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/item_vaqt"
+                app:layout_constraintTop_toBottomOf="@+id/item_order_sana" />
+
+            <TextView
+                android:id="@+id/item_vaqt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="normal"
+                android:textSize="14.sp"
+                android:fontFamily="@font/belgrano"
+                android:text="vaqt:"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_margin="8dp"
+                />
+
 
             <TextView
                 android:id="@+id/item_order_miqdori"
