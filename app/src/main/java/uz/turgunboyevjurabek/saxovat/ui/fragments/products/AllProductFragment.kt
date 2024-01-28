@@ -1,8 +1,6 @@
 package uz.turgunboyevjurabek.saxovat.ui.fragments.products
 
 import android.annotation.SuppressLint
-import android.app.AlertDialog
-import android.icu.text.DecimalFormat
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -15,16 +13,12 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
-import uz.turgunboyevjurabek.saxovat.R
 import uz.turgunboyevjurabek.saxovat.adapters.ProductAdapter.GetAllProductAdapter
-import uz.turgunboyevjurabek.saxovat.adapters.ProductAdapter.ProductAdapter
 import uz.turgunboyevjurabek.saxovat.adapters.ProductAdapter.ProductSearchAdapter
 import uz.turgunboyevjurabek.saxovat.databinding.DialogOrderBinding
 import uz.turgunboyevjurabek.saxovat.databinding.FragmentAllProductBinding
-import uz.turgunboyevjurabek.saxovat.model.madels.order.PostOrderCardRequest
-import uz.turgunboyevjurabek.saxovat.model.madels.product.GetAllProduct
+import uz.turgunboyevjurabek.saxovat.model.madels.order.card.PostOrderCardRequest
 import uz.turgunboyevjurabek.saxovat.model.madels.product.GetAllProductItem
-import uz.turgunboyevjurabek.saxovat.model.madels.product.GetProductOfCategoriya
 import uz.turgunboyevjurabek.saxovat.utils.AppObject
 import uz.turgunboyevjurabek.saxovat.utils.Girgitton
 import uz.turgunboyevjurabek.saxovat.utils.Status
@@ -237,7 +231,7 @@ class AllProductFragment : Fragment(),GetAllProductAdapter.ItemClickOnProduct {
             val lastAmount=dialogOrderBinding.editText1.text.toString().toDouble().toInt()
             val productId=getAllProductItem.id
             val clientId=Girgitton.clientId
-            val postOrderCardRequest=PostOrderCardRequest(productId,clientId!!,summa,lastAmount)
+            val postOrderCardRequest= PostOrderCardRequest(productId,clientId!!,summa,lastAmount)
             postOrderCardWithDialog(postOrderCardRequest)
 
         }

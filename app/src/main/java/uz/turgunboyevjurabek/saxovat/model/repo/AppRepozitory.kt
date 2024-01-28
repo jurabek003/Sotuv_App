@@ -1,8 +1,7 @@
 package uz.turgunboyevjurabek.saxovat.model.repo
 
-import android.icu.text.StringSearch
 import uz.turgunboyevjurabek.saxovat.model.madels.login.LoginRequest
-import uz.turgunboyevjurabek.saxovat.model.madels.order.PostOrderCardRequest
+import uz.turgunboyevjurabek.saxovat.model.madels.order.card.PostOrderCardRequest
 import uz.turgunboyevjurabek.saxovat.model.madels.register.RegisterRequest
 import uz.turgunboyevjurabek.saxovat.model.network.ApiService
 import javax.inject.Inject

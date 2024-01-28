@@ -1,4 +1,4 @@
-package uz.turgunboyevjurabek.saxovat.model.madels.order
+package uz.turgunboyevjurabek.saxovat.model.madels.order.card
 
 
 import com.google.gson.annotations.SerializedName

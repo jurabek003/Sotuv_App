@@ -1,6 +1,5 @@
 package uz.turgunboyevjurabek.saxovat.model.network
 
-import android.icu.text.StringSearch
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -8,12 +7,9 @@ import retrofit2.http.POST
 import retrofit2.http.Path
 import retrofit2.http.Query
 import uz.turgunboyevjurabek.saxovat.model.madels.categories.CategoriesResponseItem
-import uz.turgunboyevjurabek.saxovat.model.madels.categories.karzinka.GetAllCardOrder
 import uz.turgunboyevjurabek.saxovat.model.madels.clients.GetAllClients
 import uz.turgunboyevjurabek.saxovat.model.madels.login.LoginRequest
 import uz.turgunboyevjurabek.saxovat.model.madels.login.LoginResponse
-import uz.turgunboyevjurabek.saxovat.model.madels.order.PostOrderCardRequest
-import uz.turgunboyevjurabek.saxovat.model.madels.order.PostOrderCardResponse
 import uz.turgunboyevjurabek.saxovat.model.madels.product.GetAllProduct
 import uz.turgunboyevjurabek.saxovat.model.madels.product.GetProductOfCategoriya
 import uz.turgunboyevjurabek.saxovat.model.madels.product.GetSearchProduct
@@ -28,6 +24,7 @@ interface ApiService {
      */
     @POST("user/login/")
     suspend fun postLogin(@Body loginRequest: LoginRequest):LoginResponse
+
     /**
      * Registratsiya uchun
      */
@@ -64,15 +61,5 @@ interface ApiService {
     @GET("products/search?")
     suspend fun searchProduct(@Query("search") search: String, @Header("Authorization") token: String= TOKEN) :GetSearchProduct
 
-    /**
-     * Hamma orderni olish client id bo'yicha
-     */
-    @GET("order/card/list?")
-    suspend fun getAllOrderByClientId(@Query("client") id:Int,@Header("Authorization") token: String= TOKEN):GetAllCardOrder
-    /**
-     * Dialog bilan buyurtma junatish
-     */
-    @POST("order/card/create/")
-    suspend fun postOrderByCard(@Body postOrderCardRequest: PostOrderCardRequest,@Header("Authorization") token: String= TOKEN):PostOrderCardResponse
 
 }
