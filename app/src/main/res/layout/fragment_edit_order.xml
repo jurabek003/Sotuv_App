@@ -11,15 +11,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="20dp"
-        app:cardElevation="20dp"
+        app:cardElevation="10dp"
         app:cardCornerRadius="20dp">
 
         <com.facebook.shimmer.ShimmerFrameLayout
             android:id="@+id/shimmer_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:shimmer_duration="2000"
-            app:shimmer_intensity="0.5"
+            app:shimmer_duration="1500"
+            app:shimmer_intensity="1.5"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -27,6 +27,7 @@
             tools:ignore="MissingClass">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/main_constraint_layout"
                 android:layout_width="match_parent"
                 android:background="#FFDEF3F8"
                 android:layout_height="match_parent">
@@ -321,11 +322,12 @@
                     android:id="@+id/btn_save"
                     android:layout_width="match_parent"
                     android:layout_height="?actionBarSize"
-                    android:layout_margin="30dp"
+                    android:layout_marginHorizontal="10dp"
                     android:fontFamily="@font/belgrano"
                     android:text="o'zgarishlarni saqlash"
                     android:textSize="20sp"
-                    app:layout_constraintBottom_toBottomOf="parent" />
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

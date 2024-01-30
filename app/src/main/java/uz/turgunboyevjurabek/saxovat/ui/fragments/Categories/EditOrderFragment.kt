@@ -9,21 +9,25 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 import uz.turgunboyevjurabek.saxovat.R
 import uz.turgunboyevjurabek.saxovat.databinding.DialogOrderBinding
 import uz.turgunboyevjurabek.saxovat.databinding.FragmentEditOrderBinding
 import uz.turgunboyevjurabek.saxovat.model.madels.categories.karzinka.Result
+import uz.turgunboyevjurabek.saxovat.model.madels.order.card.put.PutOrderCardRequest
 import uz.turgunboyevjurabek.saxovat.model.madels.product.GetOneProduct
 import uz.turgunboyevjurabek.saxovat.utils.AppObject
 import uz.turgunboyevjurabek.saxovat.utils.Status
+import uz.turgunboyevjurabek.saxovat.vm.order.PutOrderCardViewModel
 import uz.turgunboyevjurabek.saxovat.vm.product.one.GetOneProductViewModel
 
 @AndroidEntryPoint
 class EditOrderFragment : Fragment() {
     private val binding by lazy { FragmentEditOrderBinding.inflate(layoutInflater) }
     private val getOneProductViewModel: GetOneProductViewModel by viewModels()
+    private val putOrderCardViewModel:PutOrderCardViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -108,6 +112,33 @@ class EditOrderFragment : Fragment() {
                 }
             }
         }
+
+        binding.btnSave.setOnClickListener {
+
+            val quantity=binding.editText1.text.toString().toDouble().toInt()
+            val putOrderCardRequest=PutOrderCardRequest(quantity,result.product,result.client,result.price)
+
+            putOrderCardViewModel.putOrderCardApi(putOrderCardRequest, result.id.toString()).observe(requireActivity(), Observer {
+                when(it.status){
+                    Status.LOADING -> {
+                        binding.shimmerLayout.showShimmer(true)
+                        binding.shimmerLayout.startShimmer()
+                        binding.btnSave.isEnabled=false
+                    }
+                    Status.ERROR -> {
+                        binding.shimmerLayout.hideShimmer()
+                    }
+                    Status.SUCCESS -> {
+                        binding.shimmerLayout.hideShimmer()
+                        binding.btnSave.isEnabled=true
+                        Toast.makeText(requireContext(), "Ma'lumotlar saqlandi", Toast.LENGTH_SHORT).show()
+                        findNavController().popBackStack()
+                    }
+                }
+            })
+        }
+
+
 
         //scope finish
     }

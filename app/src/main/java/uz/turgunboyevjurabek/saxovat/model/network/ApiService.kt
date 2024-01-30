@@ -73,6 +73,7 @@ interface ApiService {
      */
     @GET("order/card/list?")
     suspend fun getAllOrderByClientId(@Query("client") id:Int,@Header("Authorization") token: String= TOKEN):GetAllCardOrder
+
     /**
      * Dialog bilan buyurtma junatish
      */
@@ -82,8 +83,8 @@ interface ApiService {
     /**
      * OrderCardni itemini Edit(o'zgartirish) qilish uchun
      */
-    @PUT("order/card/")
-    suspend fun putOrderCard(@Body putOrderCardRequest: PutOrderCardRequest,@Header("Authorization") token: String= TOKEN):PutOrderCardResponse
+    @PUT("order/card/{id}/")
+    suspend fun putOrderCard(@Path("id") id: String, @Body putOrderCardRequest: PutOrderCardRequest,@Header("Authorization") token: String= TOKEN):PutOrderCardResponse
 
     /**
      * Bitta id dagi maxsulotni olish
