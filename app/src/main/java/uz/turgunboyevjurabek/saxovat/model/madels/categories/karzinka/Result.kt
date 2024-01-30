@@ -2,6 +2,7 @@ package uz.turgunboyevjurabek.saxovat.model.madels.categories.karzinka
 
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class Result(
     @SerializedName("client")
@@ -18,5 +19,5 @@ data class Result(
     val quantity: Int,
     @SerializedName("total_price")
     val totalPrice: Double
-)
+):Serializable
 
