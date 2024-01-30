@@ -17,7 +17,7 @@ class AppRepository @Inject constructor(private val apiService: ApiService) {
     suspend fun getSearchProduct(search: String)=apiService.searchProduct(search)
     suspend fun getAllOrderByClientId(id:Int)=apiService.getAllOrderByClientId(id)
     suspend fun postOrderCard(postOrderCardRequest: PostOrderCardRequest)=apiService.postOrderByCard(postOrderCardRequest)
-    suspend fun putItemOrderCard(putOrderCardRequest: PutOrderCardRequest)=apiService.putOrderCard(putOrderCardRequest)
+    suspend fun putItemOrderCard(putOrderCardRequest: PutOrderCardRequest,id: String)=apiService.putOrderCard(id,putOrderCardRequest)
     suspend fun getOneProduct(id:String)=apiService.getOneProduct(id)
 
 }
