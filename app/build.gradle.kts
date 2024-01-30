@@ -119,4 +119,8 @@ dependencies {
      */
     implementation ("com.airbnb.android:lottie:5.0.3")
 
+    /**
+     * Shimmer effecti uchun
+     */
+    implementation ("com.facebook.shimmer:shimmer:0.5.0")
 }

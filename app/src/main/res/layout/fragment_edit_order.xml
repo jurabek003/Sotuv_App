@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragments.Categories.EditOrderFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        app:cardElevation="20dp"
+        app:cardCornerRadius="20dp">
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmer_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:shimmer_duration="2000"
+            app:shimmer_intensity="0.5"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:ignore="MissingClass">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:background="#FFDEF3F8"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/textView"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/belgrano"
+                    android:src="@drawable/ic_edt"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:fontFamily="@font/belgrano"
+                    android:text="Mahsulot nomi"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+                <TextView
+                    android:id="@+id/dialog_item_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/belgrano"
+                    android:hint="Maxsulot nomi"
+                    android:maxWidth="300dp"
+                    android:textColor="#6200EA"
+                    android:textSize="17sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/divider_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintTop_toBottomOf="@+id/dialog_item_name" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/belgrano"
+                    android:text="Mahsulot narxi"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider_1" />
+
+                <TextView
+                    android:id="@+id/dialog_item_narxi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="15dp"
+                    android:fontFamily="@font/belgrano"
+                    android:hint="0.0"
+                    android:textColor="#6200EA"
+                    android:textSize="17sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider_1" />
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/divider_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintTop_toBottomOf="@+id/dialog_item_narxi" />
+
+                <TextView
+                    android:id="@+id/tht"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/belgrano"
+                    android:text="Mahsulot qoldig'i"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider_2" />
+
+                <TextView
+                    android:id="@+id/qoldiq"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/belgrano"
+                    android:hint="0.0"
+                    android:textColor="#6200EA"
+                    android:textSize="17sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tht" />
+
+                <TextView
+                    android:id="@+id/tht_kg_dona"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/belgrano"
+                    android:text="kg/dona"
+                    app:layout_constraintBottom_toBottomOf="@+id/qoldiq"
+                    app:layout_constraintStart_toEndOf="@+id/qoldiq"
+                    app:layout_constraintTop_toTopOf="@+id/qoldiq" />
+
+                <TextView
+                    android:id="@+id/sana_vaqt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/belgrano"
+                    android:hint="00:00:00 / 00.00.0000"
+                    android:textColor="#6200EA"
+                    app:layout_constraintBottom_toBottomOf="@+id/tht_kg_dona"
+                    app:layout_constraintStart_toEndOf="@+id/tht_kg_dona"
+                    app:layout_constraintTop_toTopOf="@+id/tht_kg_dona" />
+
+                <ImageView
+                    android:id="@+id/img_refresh"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginEnd="15dp"
+                    android:elevation="20dp"
+                    android:src="@drawable/arrows_"
+                    app:layout_constraintBottom_toBottomOf="@+id/sana_vaqt"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider_2" />
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/divider_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintTop_toBottomOf="@+id/tht_kg_dona" />
+
+                <EditText
+                    android:id="@+id/editText1"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:background="#FFDEF3F8"
+                    android:gravity="center"
+                    android:hint="0.0"
+                    android:inputType="number"
+                    android:maxLength="6"
+                    android:paddingVertical="5dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider_3" />
+
+                <ImageView
+                    android:id="@+id/dialog_minus"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginEnd="15dp"
+                    android:elevation="20dp"
+                    android:src="@drawable/minus"
+                    app:layout_constraintBottom_toBottomOf="@+id/editText1"
+                    app:layout_constraintEnd_toStartOf="@+id/editText1"
+                    app:layout_constraintTop_toTopOf="@+id/editText1" />
+
+                <ImageView
+                    android:id="@+id/dialog_plus"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="15dp"
+                    android:elevation="20dp"
+
+                    android:src="@drawable/plus"
+                    app:layout_constraintBottom_toBottomOf="@+id/editText1"
+                    app:layout_constraintStart_toEndOf="@+id/editText1"
+                    app:layout_constraintTop_toTopOf="@+id/editText1" />
+
+                <TextView
+                    android:id="@+id/tht_dona"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/belgrano"
+                    android:text="1 dona blokdagi tovar miqdori (2.5)"
+                    android:textColor="#6200EA"
+                    app:layout_constraintEnd_toEndOf="@+id/editText1"
+                    app:layout_constraintStart_toStartOf="@+id/editText1"
+                    app:layout_constraintTop_toBottomOf="@+id/editText1" />
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/divider_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintTop_toBottomOf="@+id/tht_dona" />
+
+                <EditText
+                    android:id="@+id/editText2"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="36dp"
+                    android:background="#FFDEF3F8"
+                    android:gravity="center"
+                    android:hint="0.0"
+                    android:inputType="number"
+                    android:maxLength="6"
+                    android:paddingVertical="5dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.501"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider_4" />
+
+                <ImageView
+                    android:id="@+id/dialog_minus2"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginEnd="15dp"
+                    android:elevation="20dp"
+
+                    android:src="@drawable/minus"
+                    app:layout_constraintBottom_toBottomOf="@+id/editText2"
+                    app:layout_constraintEnd_toStartOf="@+id/editText2"
+                    app:layout_constraintTop_toTopOf="@+id/editText2" />
+
+                <ImageView
+                    android:id="@+id/dialog_plus2"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="15dp"
+                    android:src="@drawable/plus"
+                    app:layout_constraintBottom_toBottomOf="@+id/editText2"
+                    app:layout_constraintStart_toEndOf="@+id/editText2"
+                    app:layout_constraintTop_toTopOf="@+id/editText2" />
+
+                <TextView
+                    android:id="@+id/tht_kg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:elevation="20dp"
+                    android:fontFamily="@font/belgrano"
+                    android:text="kg/dona"
+                    android:textColor="#6200EA"
+                    app:layout_constraintEnd_toEndOf="@+id/editText2"
+                    app:layout_constraintStart_toStartOf="@+id/editText2"
+                    app:layout_constraintTop_toBottomOf="@+id/editText2" />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="25dp"
+                    android:fontFamily="@font/belgrano"
+                    android:text="Jami summa :"
+                    android:textColor="#C51162"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tht_kg" />
+
+                <TextView
+                    android:id="@+id/tht_summa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/belgrano"
+                    android:hint="0.0"
+                    android:textColor="#6200EA"
+                    android:textSize="17sp"
+
+                    app:layout_constraintBottom_toBottomOf="@+id/tht_cons_sum"
+                    app:layout_constraintEnd_toStartOf="@+id/tht_cons_sum"
+                    app:layout_constraintTop_toTopOf="@+id/tht_cons_sum" />
+
+                <TextView
+                    android:id="@+id/tht_cons_sum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="25dp"
+                    android:fontFamily="@font/belgrano"
+                    android:text=" so'm"
+                    android:textColor="#6200EA"
+                    android:textSize="17sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tht_kg" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_save"
+                    android:layout_width="match_parent"
+                    android:layout_height="?actionBarSize"
+                    android:layout_margin="30dp"
+                    android:fontFamily="@font/belgrano"
+                    android:text="o'zgarishlarni saqlash"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>
