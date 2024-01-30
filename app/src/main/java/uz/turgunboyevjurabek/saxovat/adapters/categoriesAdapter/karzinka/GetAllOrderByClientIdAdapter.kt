@@ -8,17 +8,23 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import uz.turgunboyevjurabek.saxovat.databinding.ItemAllOrderRvBinding
 import uz.turgunboyevjurabek.saxovat.model.madels.categories.karzinka.Result
 
-class GetAllOrderByClientIdAdapter():RecyclerView.Adapter<GetAllOrderByClientIdAdapter.Vh>() {
+class GetAllOrderByClientIdAdapter(val putItem: PutItem):RecyclerView.Adapter<GetAllOrderByClientIdAdapter.Vh>() {
     private val list=ArrayList<Result>()
     inner class Vh(private val itemAllOrderRvBinding: ItemAllOrderRvBinding):ViewHolder(itemAllOrderRvBinding.root){
         @SuppressLint("SetTextI18n")
-        fun onBind(result: Result){
+        fun onBind(result: Result,position: Int){
             itemAllOrderRvBinding.itemOrderMiqdori.text=result.quantity.toString()+" ta"
             itemAllOrderRvBinding.itemOrderPuli.text=result.price +" so'm"
             val date=result.createdAt.substring(0..9)
             val time=result.createdAt.substring(11..18)
             itemAllOrderRvBinding.itemOrderSana.text=date
             itemAllOrderRvBinding.itemOrderVaqt.text=time
+
+
+            itemAllOrderRvBinding.constraintRoot.setOnClickListener {
+                putItem.putItemOrder(result,position)
+            }
+
         }
     }
 
@@ -29,7 +35,7 @@ class GetAllOrderByClientIdAdapter():RecyclerView.Adapter<GetAllOrderByClientIdA
     override fun getItemCount(): Int =list.size
 
     override fun onBindViewHolder(holder: Vh, position: Int) {
-        holder.onBind(list[position])
+        holder.onBind(list[position],position)
     }
 
     fun updateData(newList: ArrayList<Result>?){
@@ -38,4 +44,8 @@ class GetAllOrderByClientIdAdapter():RecyclerView.Adapter<GetAllOrderByClientIdA
         }
         newList?.let { list.addAll(it) }
     }
+    interface PutItem{
+        fun putItemOrder(result: Result,position: Int)
+    }
+
 }

@@ -6,7 +6,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.Categories.KarzinkaFragment">
 
-
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lotti_progress_in_all_order"
         android:layout_width="wrap_content"
@@ -25,6 +24,9 @@
         android:id="@+id/rv_all_order_card"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"/>
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="-65dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

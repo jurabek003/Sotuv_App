@@ -1,9 +1,9 @@
-package uz.turgunboyevjurabek.saxovat.model.madels.order
+package uz.turgunboyevjurabek.saxovat.model.madels.order.card.put
 
 
 import com.google.gson.annotations.SerializedName
 
-data class PostOrderCardResponse(
+data class PutOrderCardResponse(
     @SerializedName("client")
     val client: Int,
     @SerializedName("created_at")
