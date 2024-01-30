@@ -17,7 +17,7 @@ import uz.turgunboyevjurabek.saxovat.adapters.ProductAdapter.GetAllProductAdapte
 import uz.turgunboyevjurabek.saxovat.adapters.ProductAdapter.ProductSearchAdapter
 import uz.turgunboyevjurabek.saxovat.databinding.DialogOrderBinding
 import uz.turgunboyevjurabek.saxovat.databinding.FragmentAllProductBinding
-import uz.turgunboyevjurabek.saxovat.model.madels.order.card.PostOrderCardRequest
+import uz.turgunboyevjurabek.saxovat.model.madels.order.card.post.PostOrderCardRequest
 import uz.turgunboyevjurabek.saxovat.model.madels.product.GetAllProductItem
 import uz.turgunboyevjurabek.saxovat.utils.AppObject
 import uz.turgunboyevjurabek.saxovat.utils.Girgitton
@@ -249,7 +249,7 @@ class AllProductFragment : Fragment(),GetAllProductAdapter.ItemClickOnProduct {
                     Toast.makeText(requireContext(), "ehh ${it.message}", Toast.LENGTH_SHORT).show()
                 }
                 Status.SUCCESS -> {
-                    Toast.makeText(requireContext(), "joningdan ${it.data}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "post buldi", Toast.LENGTH_SHORT).show()
                 }
             }
         })

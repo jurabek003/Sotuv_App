@@ -6,8 +6,8 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import uz.turgunboyevjurabek.saxovat.model.madels.order.card.PostOrderCardRequest
-import uz.turgunboyevjurabek.saxovat.model.madels.order.card.PostOrderCardResponse
+import uz.turgunboyevjurabek.saxovat.model.madels.order.card.post.PostOrderCardRequest
+import uz.turgunboyevjurabek.saxovat.model.madels.order.card.post.PostOrderCardResponse
 import uz.turgunboyevjurabek.saxovat.model.repo.AppRepository
 import uz.turgunboyevjurabek.saxovat.utils.Resource
 import javax.inject.Inject

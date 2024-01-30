@@ -1,7 +1,8 @@
 package uz.turgunboyevjurabek.saxovat.model.repo
 
 import uz.turgunboyevjurabek.saxovat.model.madels.login.LoginRequest
-import uz.turgunboyevjurabek.saxovat.model.madels.order.card.PostOrderCardRequest
+import uz.turgunboyevjurabek.saxovat.model.madels.order.card.post.PostOrderCardRequest
+import uz.turgunboyevjurabek.saxovat.model.madels.order.card.put.PutOrderCardRequest
 import uz.turgunboyevjurabek.saxovat.model.madels.register.RegisterRequest
 import uz.turgunboyevjurabek.saxovat.model.network.ApiService
 import javax.inject.Inject
@@ -16,5 +17,7 @@ class AppRepository @Inject constructor(private val apiService: ApiService) {
     suspend fun getSearchProduct(search: String)=apiService.searchProduct(search)
     suspend fun getAllOrderByClientId(id:Int)=apiService.getAllOrderByClientId(id)
     suspend fun postOrderCard(postOrderCardRequest: PostOrderCardRequest)=apiService.postOrderByCard(postOrderCardRequest)
+    suspend fun putItemOrderCard(putOrderCardRequest: PutOrderCardRequest)=apiService.putOrderCard(putOrderCardRequest)
+    suspend fun getOneProduct(id:String)=apiService.getOneProduct(id)
 
 }

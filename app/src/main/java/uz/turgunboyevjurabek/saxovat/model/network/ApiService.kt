@@ -4,17 +4,24 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Path
 import retrofit2.http.Query
 import uz.turgunboyevjurabek.saxovat.model.madels.categories.CategoriesResponseItem
+import uz.turgunboyevjurabek.saxovat.model.madels.categories.karzinka.GetAllCardOrder
 import uz.turgunboyevjurabek.saxovat.model.madels.clients.GetAllClients
 import uz.turgunboyevjurabek.saxovat.model.madels.login.LoginRequest
 import uz.turgunboyevjurabek.saxovat.model.madels.login.LoginResponse
+import uz.turgunboyevjurabek.saxovat.model.madels.order.card.post.PostOrderCardRequest
+import uz.turgunboyevjurabek.saxovat.model.madels.order.card.post.PostOrderCardResponse
+import uz.turgunboyevjurabek.saxovat.model.madels.order.card.put.PutOrderCardRequest
+import uz.turgunboyevjurabek.saxovat.model.madels.order.card.put.PutOrderCardResponse
 import uz.turgunboyevjurabek.saxovat.model.madels.product.GetAllProduct
 import uz.turgunboyevjurabek.saxovat.model.madels.product.GetProductOfCategoriya
 import uz.turgunboyevjurabek.saxovat.model.madels.product.GetSearchProduct
 import uz.turgunboyevjurabek.saxovat.model.madels.register.RegisterRequest
 import uz.turgunboyevjurabek.saxovat.model.madels.register.RegisterRespons
+import uz.turgunboyevjurabek.saxovat.model.madels.product.GetOneProduct
 import uz.turgunboyevjurabek.saxovat.utils.ConstItem.TOKEN
 
 interface ApiService {
@@ -52,7 +59,7 @@ interface ApiService {
     /**
      * Mahsulotlarni id catego'riya bo'yicha olish
      */
-    @GET("products/{id}")
+    @GET("products/categories/{id}")
     suspend fun getCategoriesProduct(@Path("id") id:String,@Header("Authorization") token:String= TOKEN ):GetProductOfCategoriya
 
     /**
@@ -61,5 +68,26 @@ interface ApiService {
     @GET("products/search?")
     suspend fun searchProduct(@Query("search") search: String, @Header("Authorization") token: String= TOKEN) :GetSearchProduct
 
+    /**
+     * Hamma orderni olish client id bo'yicha
+     */
+    @GET("order/card/list?")
+    suspend fun getAllOrderByClientId(@Query("client") id:Int,@Header("Authorization") token: String= TOKEN):GetAllCardOrder
+    /**
+     * Dialog bilan buyurtma junatish
+     */
+    @POST("order/card/create/")
+    suspend fun postOrderByCard(@Body postOrderCardRequest: PostOrderCardRequest, @Header("Authorization") token: String= TOKEN): PostOrderCardResponse
 
+    /**
+     * OrderCardni itemini Edit(o'zgartirish) qilish uchun
+     */
+    @PUT("order/card/")
+    suspend fun putOrderCard(@Body putOrderCardRequest: PutOrderCardRequest,@Header("Authorization") token: String= TOKEN):PutOrderCardResponse
+
+    /**
+     * Bitta id dagi maxsulotni olish
+     */
+    @GET("products/{id}")
+    suspend fun getOneProduct(@Path("id") id: String,@Header("Authorization") token: String= TOKEN): GetOneProduct
 }
