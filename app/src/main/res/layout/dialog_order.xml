@@ -202,55 +202,8 @@
         android:layout_marginHorizontal="15dp"
         android:layout_marginTop="10dp"/>
 
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:background="#FFDEF3F8"
-        android:inputType="number"
-        android:gravity="center"
-        android:hint="0.0"
-        android:maxLength="6"
-        android:paddingVertical="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider_4" />
 
-    <ImageView
-        android:id="@+id/dialog_minus2"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:src="@drawable/minus"
-        android:elevation="20dp"
 
-        android:layout_marginEnd="15dp"
-        app:layout_constraintBottom_toBottomOf="@+id/editText2"
-        app:layout_constraintEnd_toStartOf="@+id/editText2"
-        app:layout_constraintTop_toTopOf="@+id/editText2" />
-    <ImageView
-        android:id="@+id/dialog_plus2"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:src="@drawable/plus"
-        android:layout_marginStart="15dp"
-        app:layout_constraintBottom_toBottomOf="@+id/editText2"
-        app:layout_constraintStart_toEndOf="@+id/editText2"
-        app:layout_constraintTop_toTopOf="@+id/editText2" />
-
-    <TextView
-        android:id="@+id/tht_kg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/belgrano"
-        android:text="kg/dona"
-        android:elevation="20dp"
-        android:textColor="#6200EA"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="@+id/editText2"
-        app:layout_constraintStart_toStartOf="@+id/editText2"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
 
     <TextView
         android:id="@+id/textView5"
@@ -258,36 +211,37 @@
         android:layout_height="wrap_content"
         android:layout_margin="25dp"
         android:fontFamily="@font/belgrano"
-        android:textStyle="bold"
         android:text="Jami summa :"
         android:textColor="#C51162"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tht_kg" />
+        app:layout_constraintTop_toBottomOf="@+id/divider_4" />
 
     <TextView
         android:id="@+id/tht_summa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
         android:fontFamily="@font/belgrano"
         android:text="0.0"
         android:textColor="#6200EA"
         android:textSize="17sp"
-
-        app:layout_constraintBottom_toBottomOf="@+id/tht_cons_sum"
+        app:layout_constraintBottom_toBottomOf="@+id/textView5"
         app:layout_constraintEnd_toStartOf="@+id/tht_cons_sum"
-        app:layout_constraintTop_toTopOf="@+id/tht_cons_sum" />
+        app:layout_constraintTop_toTopOf="@+id/textView5" />
 
     <TextView
         android:id="@+id/tht_cons_sum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="25dp"
+        android:layout_marginEnd="25dp"
         android:fontFamily="@font/belgrano"
         android:text=" so'm"
         android:textColor="#6200EA"
         android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tht_summa"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tht_kg"  />
+        app:layout_constraintTop_toTopOf="@+id/tht_summa" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_ortga"

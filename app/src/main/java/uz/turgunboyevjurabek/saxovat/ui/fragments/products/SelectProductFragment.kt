@@ -132,28 +132,6 @@ override fun onResume() {
                 }
             }
         }
-        /**
-         * ikkinchi edtText uchun
-         */
-        dialogOrderBinding.dialogPlus2.setOnClickListener {
-            if (!dialogOrderBinding.editText2.text.isNullOrEmpty()){
-                plus2=dialogOrderBinding.editText2.text.toString().toDouble()
-                plus2++
-                dialogOrderBinding.editText2.setText(plus2.toString())
-            }else{
-                dialogOrderBinding.editText2.setText("1.0")
-            }
-        }
-        dialogOrderBinding.dialogMinus2.setOnClickListener {
-            if (!dialogOrderBinding.editText2.text.isNullOrEmpty()  ) {
-                minus2=dialogOrderBinding.editText2.text.toString().toDouble()
-                if (minus2!=0.0){
-                    minus2--
-                    dialogOrderBinding.editText2.setText(minus2.toString())
-                }else{
-                    dialogOrderBinding.editText2.text.clear()
-                }
-            }
-        }
+
     }
 }

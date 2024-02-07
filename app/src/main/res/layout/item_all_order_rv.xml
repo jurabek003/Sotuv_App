@@ -103,18 +103,20 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toStartOf="@+id/ic_delete"
                 app:layout_constraintBottom_toBottomOf="parent"/>
+
             <ImageView
                 android:id="@+id/ic_delete"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:padding="5dp"
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?selectableItemBackground"
+                android:padding="5dp"
                 android:src="@android:drawable/ic_delete"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintVertical_bias="1.0" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 </LinearLayout>
