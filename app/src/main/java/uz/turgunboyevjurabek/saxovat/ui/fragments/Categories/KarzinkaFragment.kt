@@ -16,6 +16,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
@@ -33,15 +34,17 @@ import uz.turgunboyevjurabek.saxovat.utils.AppObject
 import uz.turgunboyevjurabek.saxovat.utils.Girgitton
 import uz.turgunboyevjurabek.saxovat.utils.Status
 import uz.turgunboyevjurabek.saxovat.vm.Categories.karzinka.GetAllOrderCardViewModel
+import uz.turgunboyevjurabek.saxovat.vm.order.DeleteOrderViewModel
 import uz.turgunboyevjurabek.saxovat.vm.product.one.GetOneProductViewModel
 
 @OptIn(DelicateCoroutinesApi::class)
 @AndroidEntryPoint
 class KarzinkaFragment : Fragment(),GetAllOrderByClientIdAdapter.PutItem {
     private val getAllOrderCardViewModel:GetAllOrderCardViewModel  by viewModels()
+    private val deleteOrderViewModel:DeleteOrderViewModel  by viewModels()
     private val binding by lazy { FragmentKarzinkaBinding.inflate(layoutInflater) }
     private lateinit var getAllOrderByClientIdAdapter: GetAllOrderByClientIdAdapter
-
+    private lateinit var snackbar2:Snackbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -94,7 +97,10 @@ class KarzinkaFragment : Fragment(),GetAllOrderByClientIdAdapter.PutItem {
         AppObject.binding.imgBack.setOnClickListener {
             findNavController().popBackStack()
         }
+        forNavigation()
+    }
 
+    private fun forNavigation() {
         val binding2=AppObject.binding
 
         // card 1 uchun
@@ -106,14 +112,34 @@ class KarzinkaFragment : Fragment(),GetAllOrderByClientIdAdapter.PutItem {
         binding2.card2.strokeWidth=3
         binding2.card2.strokeColor=resources.getColor(R.color.btn_true)
 
-
     }
 
     @SuppressLint("SetTextI18n")
     override fun putItemOrder(result: Result, position: Int) {
         findNavController().navigate(R.id.editOrderFragment, bundleOf("keyData" to result))
     }
+    @SuppressLint("NotifyDataSetChanged")
+    override fun deleteOrderItem(result: Result, position: Int) {
+        snackbar2= Snackbar.make(binding.mainLayoutAtKarzinkaFragment, "Buyurtma o'chirildi",3000)
+
+        deleteOrderViewModel.deleteItem(result.id).observe(requireActivity(), Observer {
+            when(it.status){
+                Status.LOADING -> {
+                }
+                Status.ERROR -> {
+                    Toast.makeText(requireContext(), "${it.message}", Toast.LENGTH_SHORT).show()
+                }
+                Status.SUCCESS -> {
+                    getAllOrderByClientIdAdapter.list.remove(result)
+                    getAllOrderByClientIdAdapter.notifyDataSetChanged()
+                    snackbar2.show()
+                }
+
+            }
+        })
+    }
 //    private val selectedProductLiveData = MutableLiveData<GetOneProduct?>()
+
 //    private val selectedProduct: LiveData<GetOneProduct?> get() = selectedProductLiveData
-//
+
 }

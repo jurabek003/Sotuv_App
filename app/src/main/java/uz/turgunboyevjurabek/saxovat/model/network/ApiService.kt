@@ -1,6 +1,9 @@
 package uz.turgunboyevjurabek.saxovat.model.network
 
+import androidx.lifecycle.viewmodel.CreationExtras
+import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
@@ -91,4 +94,11 @@ interface ApiService {
      */
     @GET("products/{id}")
     suspend fun getOneProduct(@Path("id") id: String,@Header("Authorization") token: String= TOKEN): GetOneProduct
+
+    /**
+     * Buyurtmani o'chirish uchun
+     */
+    @DELETE("order/card/{id}/")
+    suspend fun deleteOneOrder(@Path("id") id :Int,@Header("Authorization") token: String = TOKEN):Response<String?>
+
 }

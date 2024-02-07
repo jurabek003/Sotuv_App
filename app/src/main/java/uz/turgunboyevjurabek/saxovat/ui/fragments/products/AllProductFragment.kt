@@ -202,38 +202,18 @@ class AllProductFragment : Fragment(),GetAllProductAdapter.ItemClickOnProduct {
                 }
             }
         }
-        /**
-         * ikkinchi edtText uchun
-         */
-        dialogOrderBinding.dialogPlus2.setOnClickListener {
-            if (!dialogOrderBinding.editText2.text.isNullOrEmpty()){
-                plus2=dialogOrderBinding.editText2.text.toString().toDouble()
-                plus2++
-                dialogOrderBinding.editText2.setText(plus2.toString())
-            }else{
-                dialogOrderBinding.editText2.setText("1.0")
-            }
-        }
-        dialogOrderBinding.dialogMinus2.setOnClickListener {
-            if (!dialogOrderBinding.editText2.text.isNullOrEmpty()  ) {
-                minus2=dialogOrderBinding.editText2.text.toString().toDouble()
-                if (minus2!=0.0){
-                    minus2--
-                    dialogOrderBinding.editText2.setText(minus2.toString())
-                }else{
-                    dialogOrderBinding.editText2.text.clear()
-                }
-            }
-        }
 
         dialogOrderBinding.btnBuyurtma.setOnClickListener {
-            dialog.cancel()
-            val lastAmount=dialogOrderBinding.editText1.text.toString().toDouble().toInt()
-            val productId=getAllProductItem.id
-            val clientId=Girgitton.clientId
-            val postOrderCardRequest= PostOrderCardRequest(productId,clientId!!,summa,lastAmount)
-            postOrderCardWithDialog(postOrderCardRequest)
-
+            if (!dialogOrderBinding.editText1.text.isNullOrEmpty()){
+                dialog.cancel()
+                val lastAmount=dialogOrderBinding.editText1.text.toString().toDouble().toInt()
+                val productId=getAllProductItem.id
+                val clientId=Girgitton.clientId
+                val postOrderCardRequest= PostOrderCardRequest(productId,clientId!!,summa,lastAmount)
+                postOrderCardWithDialog(postOrderCardRequest)
+            }else{
+                Toast.makeText(requireContext(), "buyurtma miqdorini kiritmadingiz", Toast.LENGTH_SHORT).show()
+            }
         }
 
     }
