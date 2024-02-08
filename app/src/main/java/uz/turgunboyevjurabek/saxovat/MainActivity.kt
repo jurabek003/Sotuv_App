@@ -1,32 +1,44 @@
 package uz.turgunboyevjurabek.saxovat
 
+import android.content.IntentFilter
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.EntryPoint
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.HiltAndroidApp
 import uz.turgunboyevjurabek.saxovat.databinding.ActivityMainBinding
 import uz.turgunboyevjurabek.saxovat.utils.AppObject
 import uz.turgunboyevjurabek.saxovat.utils.Girgitton
+import uz.turgunboyevjurabek.saxovat.utils.NetworkConnecting
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
     var boolean:Boolean=false
-
+    private lateinit var myBroadcastReceiver: MyBroadcastReceiver
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
         cardWorkingPurchase()
-
         cardWorkingKarzinka()
 
+         myBroadcastReceiver=MyBroadcastReceiver(binding.mainConstraintLayout)
+        val intentFilter=IntentFilter("android.net.conn.CONNECTIVITY_CHANGE")
+        registerReceiver(myBroadcastReceiver,intentFilter)
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        unregisterReceiver(myBroadcastReceiver)
     }
     override fun onStart() {
         super.onStart()
@@ -42,19 +54,17 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.my_navigation_host)
 
 
-        /**
-         * navigatsiya uchun
-         */
-//        binding.btnNavigation.setupWithNavController(navController)
-
-//        binding.btnNavigation.setOnItemSelectedListener {
-//            when(it.itemId){
-//                R.id.purchaseFragment->navController.navigate(R.id.purchaseFragment)
-//                R.id.karzinkaFragment->navController.navigate(R.id.karzinkaFragment)
-//                else->{}
-//            }
-//            true
+//        if(!NetworkConnecting.isNetwork){
+//
+//            binding.lottiNoInternet.visibility=View.VISIBLE
+//            binding.myNavigationHost.visibility=View.GONE
+//            snackbar1.show()
+//        }else{
+//            binding.lottiNoInternet.visibility=View.GONE
+//            binding.myNavigationHost.visibility=View.VISIBLE
+//            snackbar2.show()
 //        }
+
 
         binding.card1.setOnClickListener {
             navController.popBackStack()
