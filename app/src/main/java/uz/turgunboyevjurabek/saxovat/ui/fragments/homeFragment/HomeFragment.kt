@@ -48,7 +48,7 @@ class HomeFragment : Fragment() {
         MySharedPreference.init(binding.root.context)
         val token=MySharedPreference.token
         LoginCheck.token=token
-        Toast.makeText(requireContext(), "${MySharedPreference.token}", Toast.LENGTH_SHORT).show()
+
 
     }
 

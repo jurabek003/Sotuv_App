@@ -18,7 +18,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-<com.google.android.material.divider.MaterialDivider
+
+
+    <com.google.android.material.divider.MaterialDivider
     android:id="@+id/divider_2"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -50,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginHorizontal="40dp"
+            android:layout_marginHorizontal="20dp"
             android:layout_weight="1"
             android:text="Bekor qilish"
             app:backgroundTint="#DD2C00" />
@@ -58,7 +60,7 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_order"
             android:layout_weight="1"
-            android:layout_marginHorizontal="40dp"
+            android:layout_marginHorizontal="20dp"
             android:text="Sotib olish"
             app:backgroundTint="#304FFE"
             android:layout_gravity="center_vertical"

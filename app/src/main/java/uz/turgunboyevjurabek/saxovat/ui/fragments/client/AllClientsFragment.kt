@@ -68,19 +68,18 @@ class AllClientsFragment : Fragment(),AllClientsAdapter.OnClick {
                     binding.lottiProgress.visibility=View.VISIBLE
                     binding.rvClients.visibility=View.GONE
                 }
-
-                Status.ERROR -> Toast.makeText(requireContext(), "vay ${it.message}", Toast.LENGTH_SHORT).show()
+                Status.ERROR -> {
+                    Toast.makeText(requireContext(), "vay ${it.message}", Toast.LENGTH_SHORT).show()
+                    binding.lottiProgress.visibility=View.GONE
+                }
                 Status.SUCCESS ->{
                     binding.lottiProgress.visibility=View.GONE
                     binding.rvClients.visibility=View.VISIBLE
-
                     allClientsAdapter= AllClientsAdapter(this)
                     val list=ArrayList<GetAllClients>()
                     list.add(it.data!!)
                     allClientsAdapter.updateData(list)
                     binding.rvClients.adapter=allClientsAdapter
-
-
                 }
             }
         })
@@ -91,6 +90,5 @@ class AllClientsFragment : Fragment(),AllClientsAdapter.OnClick {
         Girgitton.getAllClients=getAllClients
         Girgitton.clientId=getAllClients.results[position].id
         findNavController().navigate(R.id.purchaseFragment)
-
     }
 }
