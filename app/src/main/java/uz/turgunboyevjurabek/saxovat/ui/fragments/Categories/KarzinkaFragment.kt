@@ -15,6 +15,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,6 +26,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import uz.turgunboyevjurabek.saxovat.R
 import uz.turgunboyevjurabek.saxovat.adapters.categoriesAdapter.karzinka.GetAllOrderByClientIdAdapter
+import uz.turgunboyevjurabek.saxovat.adapters.dialog.RvDialogBuyOrder
+import uz.turgunboyevjurabek.saxovat.databinding.DialogBuyOrderBinding
 import uz.turgunboyevjurabek.saxovat.databinding.DialogOrderBinding
 import uz.turgunboyevjurabek.saxovat.databinding.FragmentKarzinkaBinding
 import uz.turgunboyevjurabek.saxovat.model.madels.categories.karzinka.Result
@@ -44,7 +47,9 @@ class KarzinkaFragment : Fragment(),GetAllOrderByClientIdAdapter.PutItem {
     private val deleteOrderViewModel:DeleteOrderViewModel  by viewModels()
     private val binding by lazy { FragmentKarzinkaBinding.inflate(layoutInflater) }
     private lateinit var getAllOrderByClientIdAdapter: GetAllOrderByClientIdAdapter
+    private lateinit var rvDialogBuyOrder: RvDialogBuyOrder
     private lateinit var snackbar2:Snackbar
+    private lateinit var dialog: BottomSheetDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,8 +67,10 @@ class KarzinkaFragment : Fragment(),GetAllOrderByClientIdAdapter.PutItem {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getApiWorking()
+
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun getApiWorking() {
         val id= if (Girgitton.clientId!=null) Girgitton.clientId else 0
         getAllOrderCardViewModel.getAllApiOrder(id!!).observe(requireActivity(), Observer {
@@ -84,6 +91,14 @@ class KarzinkaFragment : Fragment(),GetAllOrderByClientIdAdapter.PutItem {
                     getAllOrderByClientIdAdapter.updateData(it.data?.results)
                     getAllOrderByClientIdAdapter.notifyDataSetChanged()
                     binding.rvAllOrderCard.adapter=getAllOrderByClientIdAdapter
+
+                    if (!it.data?.results.isNullOrEmpty()){
+                        rvDialogBuyOrder= RvDialogBuyOrder(it.data!!.results)
+                        rvDialogBuyOrder.notifyDataSetChanged()
+                        Toast.makeText(requireContext(), "${rvDialogBuyOrder.list}", Toast.LENGTH_SHORT).show()
+                            buyOrders(rvDialogBuyOrder)
+                    }
+
                 }
             }
         })
@@ -111,9 +126,7 @@ class KarzinkaFragment : Fragment(),GetAllOrderByClientIdAdapter.PutItem {
         binding2.tht2.textSize=18f
         binding2.card2.strokeWidth=3
         binding2.card2.strokeColor=resources.getColor(R.color.btn_true)
-
     }
-
     @SuppressLint("SetTextI18n")
     override fun putItemOrder(result: Result, position: Int) {
         findNavController().navigate(R.id.editOrderFragment, bundleOf("keyData" to result))
@@ -138,6 +151,28 @@ class KarzinkaFragment : Fragment(),GetAllOrderByClientIdAdapter.PutItem {
             }
         })
     }
+
+    private fun buyOrders(rvDialogBuyOrder: RvDialogBuyOrder){
+
+        val dialogBuyOrderBinding=DialogBuyOrderBinding.inflate(layoutInflater)
+        dialogBuyOrderBinding.buyDialogRv.adapter=rvDialogBuyOrder
+
+         dialog=BottomSheetDialog(requireContext())
+            dialog.setContentView(dialogBuyOrderBinding.root)
+
+        binding.btnPostOrder.setOnClickListener {
+            dialog.show()
+        }
+
+        dialogBuyOrderBinding.btnClose.setOnClickListener {
+            dialog.cancel()
+        }
+
+
+    }
+
+
+
 //    private val selectedProductLiveData = MutableLiveData<GetOneProduct?>()
 
 //    private val selectedProduct: LiveData<GetOneProduct?> get() = selectedProductLiveData
