@@ -13,8 +13,8 @@ import uz.turgunboyevjurabek.saxovat.utils.AppObject
 import uz.turgunboyevjurabek.saxovat.utils.NetworkConnecting
 
 class MyBroadcastReceiver(view: View) : BroadcastReceiver() {
-    val snackbar1=Snackbar.make(view,"Internetga ulanmagansiz :(",Snackbar.LENGTH_INDEFINITE)
-    val snackbar2=Snackbar.make(view,"Internetga ulandi",3000)
+    private val snackbar1=Snackbar.make(view,"Internetga ulanmagansiz :(",Snackbar.LENGTH_INDEFINITE)
+    private val snackbar2=Snackbar.make(view,"Internetga ulandi",3000)
     override fun onReceive(context: Context, intent: Intent) {
         if (!NetworkConnecting.isNetworkAvailable(context)){
             snackbar1.show()

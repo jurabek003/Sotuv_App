@@ -13,6 +13,7 @@ import retrofit2.http.Query
 import uz.turgunboyevjurabek.saxovat.model.madels.categories.CategoriesResponseItem
 import uz.turgunboyevjurabek.saxovat.model.madels.categories.karzinka.GetAllCardOrder
 import uz.turgunboyevjurabek.saxovat.model.madels.clients.GetAllClients
+import uz.turgunboyevjurabek.saxovat.model.madels.clients.oneTime.OneTimeClientResponse
 import uz.turgunboyevjurabek.saxovat.model.madels.login.LoginRequest
 import uz.turgunboyevjurabek.saxovat.model.madels.login.LoginResponse
 import uz.turgunboyevjurabek.saxovat.model.madels.order.card.post.PostOrderCardRequest
@@ -101,4 +102,6 @@ interface ApiService {
     @DELETE("order/card/{id}/")
     suspend fun deleteOneOrder(@Path("id") id :Int,@Header("Authorization") token: String = TOKEN):Response<String?>
 
+    @POST("clients/one-time-create/")
+    suspend fun oneTimeClient(@Header("Authorization") token: String = TOKEN):OneTimeClientResponse
 }
