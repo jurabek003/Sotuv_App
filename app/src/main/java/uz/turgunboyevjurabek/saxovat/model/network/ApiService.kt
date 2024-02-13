@@ -102,6 +102,9 @@ interface ApiService {
     @DELETE("order/card/{id}/")
     suspend fun deleteOneOrder(@Path("id") id :Int,@Header("Authorization") token: String = TOKEN):Response<String?>
 
+    /**
+     * Birmarttalik sotuv uchun
+     */
     @POST("clients/one-time-create/")
     suspend fun oneTimeClient(@Header("Authorization") token: String = TOKEN):OneTimeClientResponse
 }
