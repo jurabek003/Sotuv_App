@@ -20,6 +20,6 @@ class AppRepository @Inject constructor(private val apiService: ApiService) {
     suspend fun putItemOrderCard(putOrderCardRequest: PutOrderCardRequest,id: String)=apiService.putOrderCard(id,putOrderCardRequest)
     suspend fun getOneProduct(id:String)=apiService.getOneProduct(id)
     suspend fun deleteOneOrder(id:Int)=apiService.deleteOneOrder(id)
-
+    suspend fun getOneTimeClient()=apiService.oneTimeClient()
 
 }

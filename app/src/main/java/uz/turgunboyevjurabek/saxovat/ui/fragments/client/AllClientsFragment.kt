@@ -20,6 +20,7 @@ import uz.turgunboyevjurabek.saxovat.utils.AppObject
 import uz.turgunboyevjurabek.saxovat.utils.Girgitton
 import uz.turgunboyevjurabek.saxovat.utils.Status
 import uz.turgunboyevjurabek.saxovat.vm.clients.GetAllClientsViewModel
+import uz.turgunboyevjurabek.saxovat.vm.clients.OneTimeClientViewModel
 import javax.inject.Inject
 
 
@@ -27,14 +28,17 @@ import javax.inject.Inject
 class AllClientsFragment : Fragment(),AllClientsAdapter.OnClick {
     private val binding by lazy { FragmentAllClientsBinding.inflate(layoutInflater) }
     private val getAllClientsViewModel:GetAllClientsViewModel by viewModels()
+    private val oneTimeClientViewModel:OneTimeClientViewModel by viewModels()
 
     lateinit var allClientsAdapter: AllClientsAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-
-
+        binding.btnOnePay.setOnClickListener {
+            findNavController().navigate(R.id.purchaseFragment)
+            onePay()
+        }
 
         return binding.root
     }
@@ -80,6 +84,23 @@ class AllClientsFragment : Fragment(),AllClientsAdapter.OnClick {
                     list.add(it.data!!)
                     allClientsAdapter.updateData(list)
                     binding.rvClients.adapter=allClientsAdapter
+                }
+            }
+        })
+    }
+
+
+    private fun onePay(){
+        oneTimeClientViewModel.getOneTimeClient().observe(requireActivity(), Observer {
+            when(it.status){
+                Status.LOADING -> {
+                    Toast.makeText(requireContext(), it.message.toString(), Toast.LENGTH_SHORT).show()
+                }
+                Status.ERROR -> {
+                    Toast.makeText(requireContext(), it.message.toString(), Toast.LENGTH_SHORT).show()
+                }
+                Status.SUCCESS -> {
+                    Toast.makeText(requireContext(), it.data.toString(), Toast.LENGTH_SHORT).show()
                 }
             }
         })
